@@ -19,11 +19,12 @@ export const register = (req,res) =>{
         const hash = bcrypt.hashSync(req.body.password, salt);
 
         //insert user into the db
-        const q = "INSERT INTO users(`username`,`fullname`,`email`,`phone`,`password`) VALUES (?)"
+        const q = "INSERT INTO users(`username`,`name`,`phone`,`email`,'mailing_address',`password`) VALUES (?)"
         const values = [
             req.body.username,
-            req.body.fullname,
+            req.body.name,
             req.body.email,
+            req.body.mailing_address,
             req.body.phone,
             hash
         ]

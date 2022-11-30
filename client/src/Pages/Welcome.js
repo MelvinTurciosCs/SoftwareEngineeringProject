@@ -1,3 +1,4 @@
+//import { db } from "../db.js";
 import React, { Component } from 'react';
 //import editInfo from './editInfo'
 import '../App.css';
