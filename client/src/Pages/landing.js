@@ -17,11 +17,11 @@ export default function LandingPage() {
   const [goToReservationPage, setGoToReservationPage] = React.useState(false);
 
   if(goToSignIn){
-    return <Navigate to="/auth"/>;
+    return <Navigate to="/Login"/>;
   }
 
   if(goToReservationPage){
-    return <Navigate to="/auth"/>;
+    return <Navigate to="/GuestReserve"/>;
   }
 
   return (
