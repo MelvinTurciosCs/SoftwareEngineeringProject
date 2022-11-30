@@ -297,11 +297,11 @@ section {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: black;
+  background-color: #161616;
 }
 
 .GuestReserve form{
-  background-color: white;
+  background-color: whitesmoke;
   padding: 0px 60px;
   border-radius: 10px;
 }
