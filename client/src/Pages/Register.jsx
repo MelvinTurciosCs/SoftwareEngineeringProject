@@ -43,7 +43,7 @@ const Register = () => {
         <header>
           <ul className='nav'>
             <img src='./assets/logo-no-background.png' className='logo' alt='logo'></img>
-            <li><a href='/landing'>Home</a></li>
+            <li><a href='/#'>Home</a></li>
             <li><a href='/#'>Points</a></li>
             <li><a href='/#'>Catering</a></li>
             <li><a href='/#'>Contact</a></li>
