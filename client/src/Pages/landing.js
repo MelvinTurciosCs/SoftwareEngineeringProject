@@ -7,6 +7,8 @@ import SwiperCore, {Autoplay} from 'swiper';
 // Route the buttons with Navigate
 import { Navigate } from 'react-router-dom';
 
+import { Image } from "react-image-and-background-image-fade";
+
 //Styles must use direct files imports
 import 'swiper/swiper-bundle.css';
 
@@ -60,6 +62,7 @@ export default function LandingPage() {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           <button className='MakeReservation' onClick={() => setGoToReservationPage(true)}>Make Reservation</button>
         </div>
+
       </div>
       <footer className='BottomBar'>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
