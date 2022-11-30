@@ -43,6 +43,20 @@ const Login = () => {
 
 
   return (
+    <section>
+       <div className='TopBar'>
+        <header>
+          <ul className='nav'>
+            <img src='./assets/logo-no-background.png' className='logo' alt='logo'></img>
+            <li><a href='/landing'>Home</a></li>
+            <li><a href='/#'>Points</a></li>
+            <li><a href='/#'>Catering</a></li>
+            <li><a href='/#'>Contact</a></li>
+            <button className='MakeReservation'  >Make Reservation</button>
+            <button className='SignIn'>Sign In</button>
+          </ul>
+        </header>
+      </div>
     <div className='userSys'>
         <h1>Login</h1>
         <form>
@@ -53,6 +67,7 @@ const Login = () => {
             <span>Don't have an account? <Link to="/register">Register</Link></span>
         </form>
     </div>
+    </section>
   )
 }
 

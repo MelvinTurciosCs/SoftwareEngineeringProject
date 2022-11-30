@@ -38,8 +38,22 @@ const Register = () => {
   }
 
   return (
+    <section>
+      <div className='TopBar'>
+        <header>
+          <ul className='nav'>
+            <img src='./assets/logo-no-background.png' className='logo' alt='logo'></img>
+            <li><a href='/landing'>Home</a></li>
+            <li><a href='/#'>Points</a></li>
+            <li><a href='/#'>Catering</a></li>
+            <li><a href='/#'>Contact</a></li>
+            <button className='MakeReservation'  >Make Reservation</button>
+            <button className='SignIn'>Sign In</button>
+          </ul>
+        </header>
+      </div>
     <div className='userSys'>
-        <h1>Login</h1>
+        <h1>Create Account</h1>
         <form>
             <input required type="text" placeholder='username' name = 'username' onChange={handleChange}/>
             <input required type="text" placeholder='Full Name' name = 'fullname' onChange={handleChange}/>
@@ -51,6 +65,7 @@ const Register = () => {
             <span>Already have an account? <Link to="/login">Login</Link></span>
         </form>
     </div>
+    </section>
   )
 }
 
