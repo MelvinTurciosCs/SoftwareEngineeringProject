@@ -61,14 +61,14 @@ export default function LandingPage() {
           <button className='MakeReservation' onClick={() => setGoToReservationPage(true)}>Make Reservation</button>
         </div>
       </div>
-      <div className='BottomBar'>
+      <footer className='BottomBar'>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
       <ul className='sci'>
         <li><a href='https://www.facebook.com/' className='fa fa-facebook'/></li>
         <li><a href='https://www.instagram.com/' className='fa fa-instagram'/></li>
         <li><a href='https://twitter.com/' className='fa fa-twitter'/></li>
       </ul>
-      </div>
+      </footer>
     </section>
   )
 }
