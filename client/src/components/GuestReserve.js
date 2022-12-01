@@ -74,16 +74,16 @@ const GuestReserve = () => {
         }
     ]
 
-    const isWeekend = (e) => {
-        const date = values.date;
-        // const day = date.getDay();
-        const weekday = new Date();
-        console.log(weekday)
-        let isWeekend = false;
-        // isWeekend = (day === 6) || (day === 0);
-        if ((weekday.getDay() === 6) || (weekday.getDay() === 0)) console.log("Its a weekend")
-        else console.log("Its no weekend")
-    }
+    // const isWeekend = (e) => {
+    //     const date = values.date;
+    //     // const day = date.getDay();
+    //     const weekday = new Date();
+    //     console.log(weekday)
+    //     let isWeekend = false;
+    //     // isWeekend = (day === 6) || (day === 0);
+    //     if ((weekday.getDay() === 6) || (weekday.getDay() === 0)) console.log("Its a weekend")
+    //     else console.log("Its no weekend")
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -94,7 +94,7 @@ const GuestReserve = () => {
 
     const onChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value});
-        isWeekend();
+        // isWeekend();
     }
 
     console.log(values);
