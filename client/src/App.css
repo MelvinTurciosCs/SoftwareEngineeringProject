@@ -1,6 +1,9 @@
 .App {
   background: white;
 }
+body {
+  background-color: #636361;
+}
 
 label {
   font-size: 14px;
