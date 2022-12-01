@@ -5,17 +5,17 @@ import FormInput from "./FormInput";
 const UserReserve = () => {
 
     const[values, setValues] = useState({
-        fullName:"",
+        fullname:"",
         email:"",
         date:"",
         time:"",
-        phoneNumber:"",
-        numGuests:""
+        phone:"",
+        guests:""
     });
     
     const inputs = [
         {
-            id:1,
+            id:4,
             name:"date",
             type:"date",
             placeholder:"date",
@@ -23,30 +23,32 @@ const UserReserve = () => {
             label:"Date",
         },
         {
-            id:2,
+            id:5,
             name:"time",
             type:"time",
             min:"5:00",
+            step:"120000",
             placeholder:"Time",
             //errorMessage:"Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character.",
             label:"Time",
-            //pattern: '^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$',
+            pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
             required: true
         },
         {
-            id:3,
-            name:"numGuests",
+            id:6,
+            name:"guests",
             type:"number",
             placeholder:"Number of Guests",
-            errorMessage:"Passwords don't match",
+            errorMessage:"Number of Guests is Required",
             label:"Number of Guests",
-            //pattern: values.password,
+            pattern: "^[1-9][0-9]*$",
             required: true
         }
     ]
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
     };
 
     const onChange = (e) => {

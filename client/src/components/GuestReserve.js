@@ -5,18 +5,18 @@ import FormInput from "./FormInput";
 const GuestReserve = () => {
 
     const[values, setValues] = useState({
-        fullName:"",
+        fullname:"",
         email:"",
         date:"",
         time:"",
-        phoneNumber:"",
-        numGuests:""
+        phone:"",
+        guests:""
     });
     
     const inputs = [
         {
             id:1,
-            name:"fullName",
+            name:"fullname",
             type:"text",
             placeholder:"Full Name",
             errorMessage:"Username should be 3-16 characters and shouldn't include and special character!",
@@ -35,7 +35,7 @@ const GuestReserve = () => {
         },
         {
             id:3,
-            name:"phoneNumber",
+            name:"phone",
             type:"number",
             placeholder:"Phone Number",
             errorMessage:"Not a valid phone number.",
@@ -64,7 +64,7 @@ const GuestReserve = () => {
         },
         {
             id:6,
-            name:"numGuests",
+            name:"guests",
             type:"number",
             placeholder:"Number of Guests",
             errorMessage:"Passwords don't match",
@@ -74,12 +74,27 @@ const GuestReserve = () => {
         }
     ]
 
+    const isWeekend = (e) => {
+        const date = values.date;
+        // const day = date.getDay();
+        const weekday = new Date();
+        console.log(weekday)
+        let isWeekend = false;
+        // isWeekend = (day === 6) || (day === 0);
+        if ((weekday.getDay() === 6) || (weekday.getDay() === 0)) console.log("Its a weekend")
+        else console.log("Its no weekend")
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+
+
     };
 
     const onChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value});
+        isWeekend();
     }
 
     console.log(values);
@@ -92,6 +107,7 @@ const GuestReserve = () => {
             <button type="submit">Submit</button>
             {/* <h1>{values.birthday}</h1> */}
         </form>
+        {/* {isWeekend} */}
 
     </div>
 };
