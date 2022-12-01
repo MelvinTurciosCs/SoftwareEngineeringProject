@@ -32,11 +32,11 @@ const Modal = ({ setIsOpen }) => {
             </div>
             <div className="modalActions">
               <div className="actionsContainer">
-                <button className="deleteBtn" onClick={() => setGoToReservationPage(true)}>
+                <button className="GuestBtn" onClick={() => setGoToReservationPage(true)}>
                   Continue as Guest
                 </button>
                 <button
-                  className="cancelBtn"
+                  className="SignInBtn"
                   onClick={() => setGoToSignIn(true)}>
                   Sign In
                 </button>
