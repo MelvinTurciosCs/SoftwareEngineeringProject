@@ -8,6 +8,12 @@ label {
   color: rgb(34, 34, 34);
 }
 
+.logo {
+  padding-top: 5px;
+  height: 75px;
+  width: 75px;
+}
+
 .TopBar {
   position: fixed;
   left: 0;
@@ -161,9 +167,6 @@ section {
 .swiper-slide {
   text-align: center;
   font-size: 25px;
-  background: #636361;
-
-  /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;

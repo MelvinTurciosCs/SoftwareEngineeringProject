@@ -30,22 +30,22 @@ export default function LandingPage() {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 4000,
+          delay: 4500,
           disableOnInteraction: false,
         }}
        modules={[Autoplay]}
        className="mySwiper"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide><img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img></SwiperSlide>
+        <SwiperSlide><img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img></SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
         <SwiperSlide>Slide 4</SwiperSlide>
       </Swiper>
       <div className='TopBar'>
         <header>
           <ul className='nav'>
-            <img src='./assets/logo-no-background.png' className='logo' alt='logo'></img>
-            <li><a href='/landing'>Home</a></li>
+            <img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img>
+            <li><a href='/#'>Home</a></li>
             <li><a href='/#'>Points</a></li>
             <li><a href='/#'>Catering</a></li>
             <li><a href='/#'>Contact</a></li>
@@ -56,7 +56,7 @@ export default function LandingPage() {
       </div>
       <div className='content'>
         <div className='textBox'>
-          <h1>Welcome To NowReserve</h1>
+          <h1>Welcome To Reserve Reserve <img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img></h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           <button className='MakeReservation' onClick={() => setGoToReservationPage(true)}>Make Reservation</button>
         </div>
