@@ -9,6 +9,7 @@ import Welcome from "./Pages/Welcome"
 import GuestReserve from "./components/GuestReserve";
 import Login from "./Pages/Login"
 import Register from "./Pages/Register"
+import Res from "./components/Res";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/GuestReserve" element={<GuestReserve />}/>
           <Route path="/userReserve" element={<userReserve />}/>
+          <Route path="/userRes" element={<Res />}/>
         </Routes>
       </Router>
   );
