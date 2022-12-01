@@ -10,16 +10,12 @@ SwiperCore.use([Autoplay]);
 
 export default function LandingPage() {
   const [goToSignIn, setGoToSignIn] = React.useState(false);
-  const [goToReservationPage, setGoToReservationPage] = React.useState(false);
+  
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
 
   if(goToSignIn){
     return <Navigate to="/Login"/>;
-  }
-
-  if(goToReservationPage){
-    return <Navigate to="/GuestReserve"/>;
   }
 
   return (

@@ -1,8 +1,21 @@
 import React from 'react';
 import styles from "./Modal.css";
+import { Navigate } from 'react-router-dom';
 import { RiCloseLine } from "react-icons/ri";
 
 const Modal = ({ setIsOpen }) => {
+  const [goToReservationPage, setGoToReservationPage] = React.useState(false);
+
+  const [goToSignIn, setGoToSignIn] = React.useState(false);
+
+  if(goToReservationPage){
+    return <Navigate to="/GuestReserve"/>;
+  }
+
+  if(goToSignIn){
+    return <Navigate to="/Login"/>;
+  }
+
   return (
     <>
       <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
@@ -19,13 +32,13 @@ const Modal = ({ setIsOpen }) => {
             </div>
             <div className="modalActions">
               <div className="actionsContainer">
-                <button className="deleteBtn" onClick={() => setIsOpen(false)}>
+                <button className="deleteBtn" onClick={() => setGoToReservationPage(true)}>
                   Continue as Guest
                 </button>
                 <button
                   className="cancelBtn"
-                  onClick={() => setIsOpen(false)}>
-                  Cancel
+                  onClick={() => setGoToSignIn(true)}>
+                  Sign In
                 </button>
               </div>
             </div>
