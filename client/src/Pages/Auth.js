@@ -12,7 +12,7 @@ export default function (props) {
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In</h3>
           <div className="form-group mt-3">
-            <label>Email Address</label>
+            <label>Random Change</label>
             <input
               type="email"
               className="form-control mt-1"
