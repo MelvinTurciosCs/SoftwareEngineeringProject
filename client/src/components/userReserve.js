@@ -2,7 +2,7 @@ import "../App.css"
 import { useState } from "react";
 import FormInput from "./FormInput";
 
-const userReserve = () => {
+const UserReserve = () => {
 
     const[values, setValues] = useState({
         fullName:"",
@@ -16,35 +16,6 @@ const userReserve = () => {
     const inputs = [
         {
             id:1,
-            name:"fullName",
-            type:"text",
-            placeholder:"Full Name",
-            errorMessage:"Username should be 3-16 characters and shouldn't include and special character!",
-            label:"Name",
-            pattern: "^[A-Za-z0-9]{3,16}$", //js regex code
-            required: true
-        },
-        {
-            id:2,
-            name:"email",
-            type:"email",
-            placeholder:"email",
-            errorMessage:"Should be a valid email adresss",
-            label:"Email",
-            required: true
-        },
-        {
-            id:3,
-            name:"phoneNumber",
-            type:"number",
-            placeholder:"Phone Number",
-            errorMessage:"Not a valid phone number.",
-            pattern:"/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g",
-            label:"Phone Number",
-            required: true
-        },
-        {
-            id:4,
             name:"date",
             type:"date",
             placeholder:"date",
@@ -52,7 +23,7 @@ const userReserve = () => {
             label:"Date",
         },
         {
-            id:5,
+            id:2,
             name:"time",
             type:"time",
             min:"5:00",
@@ -63,7 +34,7 @@ const userReserve = () => {
             required: true
         },
         {
-            id:6,
+            id:3,
             name:"numGuests",
             type:"number",
             placeholder:"Number of Guests",
@@ -96,4 +67,4 @@ const userReserve = () => {
     </div>
 };
 
-export default userReserve;
+export default UserReserve;

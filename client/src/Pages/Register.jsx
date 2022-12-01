@@ -13,7 +13,8 @@ const Register = () => {
     fullname:"",
     email:"",
     phone:"",
-    password:""
+    password:"",
+    points: 0
   })
 
   //to catch registering a username already made

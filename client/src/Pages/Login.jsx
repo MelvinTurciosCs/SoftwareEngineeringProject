@@ -22,6 +22,7 @@ const Login = () => {
       //login in from authContext
       const {login} = useContext(AuthContext);
 
+  
       //console.log(currentUser) --> from context
 
       //async function because we are making an api request
@@ -31,7 +32,7 @@ const Login = () => {
             await login(inputs)
             //api request moved to authenContext
             //   await axios.post("/authen/login", inputs)
-          navigate("/welcome")
+          navigate("/userHome")
         }catch(err){
           setError(err.response.data); //path of the error message in inpsect
         }
