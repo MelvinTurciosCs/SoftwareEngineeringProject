@@ -38,8 +38,8 @@ export default function LandingPage() {
       >
         <SwiperSlide><img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img></SwiperSlide>
         <SwiperSlide><img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img></SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
+        <SwiperSlide><img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img></SwiperSlide>
+        <SwiperSlide><img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img></SwiperSlide>
       </Swiper>
       <div className='TopBar'>
         <header>
@@ -56,7 +56,7 @@ export default function LandingPage() {
       </div>
       <div className='content'>
         <div className='textBox'>
-          <h1>Welcome To Reserve Reserve <img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img></h1>
+          <h1>Welcome To Restaurant Reserve </h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           <button className='MakeReservation' onClick={() => setGoToReservationPage(true)}>Make Reservation</button>
         </div>

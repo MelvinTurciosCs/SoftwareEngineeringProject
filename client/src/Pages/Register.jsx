@@ -42,7 +42,7 @@ const Register = () => {
       <div className='TopBar'>
         <header>
           <ul className='nav'>
-            <img src='./assets/logo-no-background.png' className='logo' alt='logo'></img>
+            <img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img>
             <li><a href='/#'>Home</a></li>
             <li><a href='/#'>Points</a></li>
             <li><a href='/#'>Catering</a></li>
@@ -53,8 +53,8 @@ const Register = () => {
         </header>
       </div>
     <div className='userSys'>
-        <h1>Create Account</h1>
         <form>
+            <h1 className='createAccount'>Create Account</h1>
             <input required type="text" placeholder='username' name = 'username' onChange={handleChange}/>
             <input required type="text" placeholder='Full Name' name = 'fullname' onChange={handleChange}/>
             <input required type="email" placeholder='email' name = 'email' onChange={handleChange} />

@@ -47,8 +47,8 @@ const Login = () => {
        <div className='TopBar'>
         <header>
           <ul className='nav'>
-            <img src='./assets/logo-no-background.png' className='logo' alt='logo'></img>
-            <li><a href='/landing'>Home</a></li>
+            <img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img>
+            <li><a href='/#'>Home</a></li>
             <li><a href='/#'>Points</a></li>
             <li><a href='/#'>Catering</a></li>
             <li><a href='/#'>Contact</a></li>
@@ -58,8 +58,8 @@ const Login = () => {
         </header>
       </div>
     <div className='userSys'>
-        <h1>Login</h1>
         <form>
+            <h1 className='logintag'>Login</h1>
             <input required type="text" placeholder='username' name = "username" onChange = {handleChange}/>
             <input required type="password" placeholder='password' name = "password" onChange = {handleChange}/>
             <button onClick = {handleSubmit}>Login</button>
