@@ -47,7 +47,6 @@ const Register = () => {
             <li><a href='/#'>Points</a></li>
             <li><a href='/#'>Catering</a></li>
             <li><a href='/#'>Contact</a></li>
-            <button className='MakeReservation'  >Make Reservation</button>
             <button className='SignIn'>Sign In</button>
           </ul>
         </header>
