@@ -3,23 +3,16 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {Autoplay} from 'swiper';
 import { Navigate } from 'react-router-dom';
 import 'swiper/swiper-bundle.css';
+import Modal from "./Modal";
+
 
 SwiperCore.use([Autoplay]);
 
 export default function LandingPage() {
   const [goToSignIn, setGoToSignIn] = React.useState(false);
   const [goToReservationPage, setGoToReservationPage] = React.useState(false);
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal(!modal)
-  };
-
-  if(modal) {
-    document.body.classList.add('active-modal')
-  } else {
-    document.body.classList.remove('active-modal')
-  }
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
 
   if(goToSignIn){
     return <Navigate to="/Login"/>;
@@ -54,20 +47,8 @@ export default function LandingPage() {
             <li><a href='/#'>Points</a></li>
             <li><a href='/#'>Catering</a></li>
             <li><a href='/#'>Contact</a></li>
-            <button onClick={toggleModal}  className='btn-modal'>Make Reservation</button>
-            {modal && (
-              <div className='modal'>
-                <div onClick={toggleModal}  className='overlay'></div>
-                  <div className='modal-content'>
-                    <h2>Would you like to contiue as a guest?</h2>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <button>Continue to Resgistration</button>
-                    <button>Sign Up</button>
-                  </div>
-            </div>
-            )}
+            <button className='MakeReservation' onClick={() => setIsOpen2(true)}>Make Reservation</button>
+            {isOpen2 && <Modal setIsOpen={setIsOpen2} />}
             <button className='SignIn'  onClick={() => setGoToSignIn(true)}>Sign In</button>
           </ul>
         </header>
@@ -76,20 +57,8 @@ export default function LandingPage() {
         <div className='textBox'>
           <h1>Welcome To Restaurant Reserve </h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <button className='MakeReservation' onClick={toggleModal}>Make Reservation</button>
-          {modal && (
-              <div className='modal'>
-                <div onClick={toggleModal}  className='overlay'></div>
-                  <div className='modal-content'>
-                    <h2>Would you like to contiue as a guest?</h2>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <button>Continue to Resgistration</button>
-                    <button>Sign Up</button>
-                  </div>
-            </div>
-            )}
+          <button className='MakeReservation' onClick={() => setIsOpen(true)}>Make Reservation</button>
+          {isOpen && <Modal setIsOpen={setIsOpen} />}
         </div>
         <footer className='BottomBar'>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
