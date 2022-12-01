@@ -46,10 +46,9 @@ label {
 }
 
 .TopBar button{
-  display: inline-block;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-right: 10px;
+  position: absolute;
+  top: 15px;
+  right: 60px;
   padding: 8px 20px;
   border-color: whitesmoke;
   background-color: #161616;
