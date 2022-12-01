@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 //import editInfo from './editInfo'
 import '../App.css';
-import Auth from "./Auth";
-
 
 class Welcome extends Component {
     state = {

@@ -1,42 +1,20 @@
 .App {
   background: white;
 }
-
-.Auth-form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-}
-
-
-.Auth-form {
-  width: 420px;
-  box-shadow: rgb(0 0 0 / 20%) 1px 1px 10px;
-  padding-top: 30px;
-  padding-bottom: 20px;
-  border-radius: 8px;
-
-}
-
-.Auth-form-content {
-  padding-left: 12%;
-  padding-right: 12%;
-}
-
-.Auth-form-title {
-  text-align: center;
-  margin-bottom: 1em;
-  font-size: 24px;
-  color: rgb(34, 34, 34);
-  font-weight: 800;
+body {
+  background-color: #636361;
 }
 
 label {
   font-size: 14px;
   font-weight: 600;
   color: rgb(34, 34, 34);
+}
+
+.logo {
+  padding-top: 5px;
+  height: 75px;
+  width: 75px;
 }
 
 .TopBar {
@@ -46,6 +24,7 @@ label {
   width: 100%;
   background-color: black;
   overflow: hidden;
+  z-index: 2;
 }
 
 .TopBar li {
@@ -147,8 +126,8 @@ section {
 
 .sci {
   position: absolute;
-  bottom: 15px;
-  right: 25px;
+  bottom: 10px;
+  right: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -191,9 +170,6 @@ section {
 .swiper-slide {
   text-align: center;
   font-size: 25px;
-  background: #636361;
-
-  /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -328,11 +304,11 @@ section {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: black;
+  background-color: #636361;
 }
 
 .GuestReserve form{
-  background-color: white;
+  background-color: whitesmoke;
   padding: 0px 60px;
   border-radius: 10px;
 }
@@ -348,8 +324,8 @@ section {
   height:50px;
   padding:10px;
   border: none;
-  background-color: red;
-  color : white;
+  background-color: #161616;
+  color : whitesmoke;
   border-radius: 5px;
   font-weight: bold;
   font-size: 19px;
@@ -359,26 +335,34 @@ section {
 }
 
 .userSys {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100vw;
   height: 100vh;
-  background-color: aquamarine;
+  background-color: #161616;
 }
 
 .userSys h1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   font-size: 20px;
-  color:#161616;
-  margin-bottom: 20px;
+  color: whitesmoke;
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .userSys form{
   display: flex;
   flex-direction: column;
+  box-shadow: rgb(0 0 0 / 20%) 1px 1px 10px;
   padding: 50px;
-  background-color: white;
-  width: 300px;
+  border-radius: 8px;
+  background-color: #636361;
+  width: 420px;
   gap: 20px;
 }
 
@@ -389,10 +373,9 @@ section {
 }
 
 .userSys button{
-  
   padding: 10px;
   border: none;
-  background-color: teal;
+  background-color: #161616;
   cursor: pointer;
   color: white;
   
@@ -408,3 +391,4 @@ section {
   color: red;
   text-align: center;
 }
+
