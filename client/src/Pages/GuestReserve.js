@@ -17,7 +17,8 @@ const GuestReserve = () => {
         time:"",
         phone:"",
         guests:"",
-        tableName:""
+        tableName:"",
+        hasReserations:false
     });
 
     const inputs = [
@@ -99,17 +100,23 @@ const GuestReserve = () => {
         try{
             //isWeekend();
             await axios.post("/reservations/add",values)
+            //let reserv = await axios.get("/reservations/checkRes",values)
+
+            // if(reserv === false)
+            // {
+            //     console.log("No reservations on that day")
+            // }
         }catch(err){
             console.log(err)
         }
     };
-
+ 
     const onChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value});
         // isWeekend();
     }
 
-    //console.log(values);
+    //console.log(values);sdf
     return <div className = "GuestReserve">
         <form onSubmit={handleSubmit}>
         <h1>Reserve a Table</h1>

@@ -5,14 +5,17 @@ import { register } from "./authen.js";
 export const checkRes = (req,res) =>{
     const q = "SELECT tableName FROM reservations WHERE date = ? AND time = ?"
     db.query(q,[req.body.date,req.body.time],(err,data1)=>{
+        // req.body.hasReserations = false;
+        let test = false;
         if (data1.length === 0)
         {
             //there are no reservations on that day
-            return false;
+            return test;
         }
-        return true; //there are reservations on that day
+        test = true;
+        return test; //there are reservations on that day
     })
-}
+};
 
 
 export const addReserve = (req,res)=>{
