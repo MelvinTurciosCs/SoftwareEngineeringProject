@@ -488,3 +488,7 @@ section {
       transform: rotate(359deg);
   }
 }
+
+.ModalMessage{
+  color: #161616;
+}
