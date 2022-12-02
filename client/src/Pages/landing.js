@@ -10,9 +10,7 @@ SwiperCore.use([Autoplay]);
 
 export default function LandingPage() {
   const [goToSignIn, setGoToSignIn] = React.useState(false);
-  
   const [isOpen, setIsOpen] = useState(false);
-  const [isOpen2, setIsOpen2] = useState(false);
 
   if(goToSignIn){
     return <Navigate to="/Login"/>;
@@ -43,8 +41,6 @@ export default function LandingPage() {
             <li><a href='/#'>Points</a></li>
             <li><a href='/#'>Catering</a></li>
             <li><a href='/#'>Contact</a></li>
-            <button className='MakeReservation' onClick={() => setIsOpen2(true)}>Make Reservation</button>
-            {isOpen2 && <Modal setIsOpen={setIsOpen2} />}
             <button className='SignIn'  onClick={() => setGoToSignIn(true)}>Sign In</button>
           </ul>
         </header>
