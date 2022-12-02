@@ -93,3 +93,24 @@ export const addReserve = (req,res)=>{
 //     })
 // })
 
+
+
+ // var tableN = ""
+            // const q2 = "INSERT INTO reservations (`date`,`time`,`guests`,`tableName`,`userID`,`fullname`,`email`,`phone`) VALUES (?)"
+            // const values = [
+            //     req.body.date,
+            //     req.body.time,
+            //     req.body.guests,
+            //     tableN,
+            //     req.body.userID,
+            //     req.body.fullname,
+            //     req.body.email,
+            //     req.body.phone
+            // ]
+            // values[3] = "Table 5"
+            // console.log("All tables free")
+            // db.query(q2,[values],(err,data)=>{
+            //     //console.log(data)"
+            //     if(err) return res.json(err)
+            //     return res.json(data)
+            // });
