@@ -1,8 +1,9 @@
 import "../App.css"
-import { useState } from "react";
+import React, { useState } from "react";
 import FormInput from "./FormInput";
+import Modal from "./SubmitMessage";
 
-const userReserve = () => {
+const UserReserve = () => {
 
     const[values, setValues] = useState({
         fullName:"",
@@ -98,7 +99,11 @@ const userReserve = () => {
             else {
                 high_traffic = false;
             }
-    }
+        }
+
+        if(high_traffic){
+            <Modal></Modal>
+        }
     };
 
     const onChange = (e) => {
@@ -120,4 +125,4 @@ const userReserve = () => {
     </div>
 };
 
-  export default userReserve;
+  export default UserReserve;

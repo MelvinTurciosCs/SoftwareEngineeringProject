@@ -31,7 +31,7 @@ const SubmitMessage = props => {
             <div className="modal-body">{props.children}</div>
             <div className="modal-footer">
               <button onClick={props.onClose} className="button">
-                Close
+                OK
               </button>
             </div>
           </div>
