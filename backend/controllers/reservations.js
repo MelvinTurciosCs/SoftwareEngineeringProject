@@ -7,11 +7,48 @@ export const addReserve = (req,res)=>{
     //const {currentUser} = useContext(AuthContext);
 
     //grab reserations during same date/time
-    const q = "SELECT * FROM reservations WHERE date = ? AND time = ?"
-    db.query(q,[req.body.date,req.body.time],(err,data)=>{
-        console.log(data)
-        let test = data;
-        console.log(test);
+    const q = "SELECT table_name FROM reservation_details WHERE reservation_Date = ? AND reservation_Time = ?"
+    db.query(q,[req.body.date,req.body.time],(err,data1)=>{
+        //console.log(data1) displays data1
+        //gets all tables that we have on hand
+        const tableT = "SELECT table_name, on_Hand, table_size FROM table_tracker"
+        db.query(q,(err,data2)=>{
+            //console.log(data1) display data1
+            //data1[0].table_name gets one element from data1 query
+            //data1.length gets the size
+            //modify tables on hand
+            //iterates through tables taken
+            for(let i = 0; i < data1.length;i++)
+            {
+                //iterates through list of tables on Hand
+                for (let j = 0; j < data2.length;j++)
+                {
+                    //if tables same name decreament on_Hand
+                    if(data1[i].table_name === data2[j].table_name)
+                    {
+                        data2[j].on_Hand = data2[j].on_Hand - 1
+
+                    }
+                } 
+            }
+
+            var Avail = false;
+            var tableName;
+            //iterates through list of tables on Hand
+            for (let i= 0; i < data2.length;i++)
+            {
+                //Check if we have table and equal to or greater than party
+                if(data2[i].on_Hand !== 0 && data2[i].table_size >= req.body.guests)
+                {
+                    Avail = true;
+                    tableName = data2[i].table_name;
+                }
+            } 
+
+
+        })
+
+
         // let total_tables = [2,3,4,5];
 
         // //find if single table can accomidate guests
