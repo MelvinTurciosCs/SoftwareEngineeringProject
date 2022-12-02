@@ -74,13 +74,37 @@ const userReserve = () => {
         }
     ]
 
+    const holidays = [
+        "2023-01-01",
+        "2023-01-16",
+        "2023-02-14", 
+        "2023-02-20",
+        "2023-04-07",
+        "2023-05-29",
+        "2023-11-10",
+        "2023-11-04",
+        "2023-12-24"
+    ]
+
+    
     const handleSubmit = (e) => {
         e.preventDefault();
+        let high_traffic = new Boolean(false);
+
+        for(let i = 0; i < holidays.length; i++) {
+            if(values.date === holidays[i]){
+                high_traffic = true;
+            }
+            else {
+                high_traffic = false;
+            }
+    }
     };
 
     const onChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value});
     }
+
 
     console.log(values);
     return <div className = "GuestReserve">
@@ -96,4 +120,4 @@ const userReserve = () => {
     </div>
 };
 
-export default userReserve;
+  export default userReserve;
