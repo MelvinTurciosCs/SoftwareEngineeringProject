@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../context/authContext';
+import '../App.css';
 
 function Confirmation() {
   const [goToSignIn, setGoToSignIn] = useState(false);
+  const [ currentUser ] = useContext(AuthContext);
 
   if(goToSignIn){
     return <Navigate to="/Login"/>;
   }
+
   return (
     <>
       <div className='TopBar'>
@@ -21,6 +25,13 @@ function Confirmation() {
           </ul>
         </header>
       </div>
+      <form className='confirmation-form-container'>
+        <h1 className='ThankYouTitle'>Thank you, {currentUser?.points}</h1>
+        <p>You'll receive a confirmation soon.</p>
+        <form className='inner-form-contianer'>
+
+        </form>
+      </form>
     </>
   )
 }
