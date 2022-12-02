@@ -4,15 +4,15 @@ import { AuthContext } from '../context/authContext';
 import '../App.css';
 
 function Confirmation() {
+  const { currentUser } = useContext(AuthContext);
   const [goToSignIn, setGoToSignIn] = useState(false);
-  const [ currentUser ] = useContext(AuthContext);
-
+  
   if(goToSignIn){
     return <Navigate to="/Login"/>;
   }
 
   return (
-    <>
+    <section>
       <div className='TopBar'>
         <header>
           <ul className='nav'>
@@ -25,14 +25,18 @@ function Confirmation() {
           </ul>
         </header>
       </div>
-      <form className='confirmation-form-container'>
-        <h1 className='ThankYouTitle'>Thank you, {currentUser?.points}</h1>
+      <div className='Confirmation-content'>
+        <h1>Thank you, {currentUser?.points}</h1>
         <p>You'll receive a confirmation soon.</p>
-        <form className='inner-form-contianer'>
-
-        </form>
+      <form className='Confirmation-form-container'>
+        <h3 className='Date-confirmation'>Date: </h3>
+        <h3 className='Time-confirmation'>Time: </h3>
+        <h3>test info</h3> 
       </form>
-    </>
+        <h3>Hello World</h3>
+      </div>
+
+    </section>
   )
 }
 

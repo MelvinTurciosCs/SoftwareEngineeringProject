@@ -39,7 +39,7 @@ const Modal = ({ setIsOpen }) => {
                   <button
                     className="SignInBtn"
                     onClick={() => setGoToSignIn(true)}>
-                    Sign In
+                    Sign Up
                   </button>
               </div>
             </div>

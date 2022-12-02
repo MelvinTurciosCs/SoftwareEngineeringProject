@@ -305,7 +305,7 @@ section {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #636361;
+  background-color: #161616;
 }
 
 .GuestReserve form{
@@ -393,3 +393,24 @@ section {
   text-align: center;
 }
 
+.Confirmation-content {
+  margin-left: 350px;
+  text-align: center;
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.Confirmation-form-container {
+  margin-left: 0px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #636361;
+  width: 50vw;
+  height: 70vh;
+  text-align: center;
+  text-decoration: none;
+}
+
+.Confirmation-form-container h3 {
+  color: whitesmoke;
+}
