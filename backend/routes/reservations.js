@@ -1,12 +1,7 @@
 import express from "express"
+import { addReserve } from "../controllers/reservations.js"
 
 const router = express.Router()
-
-// router.get("/test", (req,res)=>{
-//     res.json("this is testestt")
-// })
-
-
-
+router.post("/add",addReserve)
 
 export default router

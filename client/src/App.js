@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Auth from "./Pages/Auth"
 import Landing from "./Pages/landing"
 import Welcome from "./Pages/Welcome"
-import GuestReserve from "./components/GuestReserve";
+import GuestReserve from "./Pages/GuestReserve";
 import UserReserve from "./components/userReserve";
 import Login from "./Pages/Login"
 import Register from "./Pages/Register"
