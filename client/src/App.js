@@ -8,7 +8,7 @@ import Welcome from "./Pages/Welcome";
 import GuestReserve from "./components/GuestReserve";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
-import Confirmation from "./Pages/Confirmation_page";
+import Confirmation from "./Pages/Confirmation";
 
 function App() {
   return (
