@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 //import editInfo from './editInfo'
 import '../App.css';
 import Auth from "./Auth";
+import {Link} from "react-router-dom";
+import {AuthContext } from "../context/authContext"
 
 
 class Welcome extends Component {
@@ -22,6 +24,10 @@ class Welcome extends Component {
         },
     };
 
+    //for context
+    // const {lcurrentUser} = useContext(AuthContext);
+    // //if there is a current user, write the username
+    // <span>{currentUser?.userName}</span>
 
     getName = (evt) => {
         const val = evt.target.value;

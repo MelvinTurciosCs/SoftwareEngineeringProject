@@ -26,11 +26,13 @@ export const register = (req,res) =>{
             req.body.email,
             req.body.mailing_address,
             req.body.phone,
-            hash
+            hash,
+            req.body.points
         ]
 
         db.query(q,[values],(err,data)=>{
             if (err) return res.json(err);
+            console.log("created users")
             return res.status(200).json("User has been created!")
         });
 

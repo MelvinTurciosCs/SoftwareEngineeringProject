@@ -81,7 +81,7 @@ label {
   text-decoration: none;
 }
 
-.TopBar .MakeReservation {
+.TopBar .SignIn {
   margin-left: auto;
   margin-right: 20px;
 }
@@ -209,7 +209,7 @@ section {
 }
 
 
-/* hunters css */
+/* userHome */
 
 .Welcome-form-container {
   display: flex;
@@ -289,6 +289,9 @@ section {
   font-weight:  700;
 }
 
+
+/* form input page */
+
 .FormInput {
   display:flex;
   flex-direction: column;
@@ -318,11 +321,12 @@ section {
   border: 1px solid red;
 }
 
-
 .FormInput input:invalid[focused="true"] ~ span{
   display:block;
 }
 
+
+/* guest Reserve page */
 .GuestReserve {
   display:flex;
   align-items: center;
@@ -358,6 +362,8 @@ section {
   margin-bottom: 30px;
 }
 
+ /* for login/register page */
+ 
 .userSys {
   display:flex;
   flex-direction: column;
