@@ -31,9 +31,7 @@ function Confirmation() {
       <form className='Confirmation-form-container'>
         <h3 className='Date-confirmation'>Date: </h3>
         <h3 className='Time-confirmation'>Time: </h3>
-        <h3>test info</h3> 
       </form>
-        <h3>Hello World</h3>
       </div>
 
     </section>
