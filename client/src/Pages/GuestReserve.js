@@ -17,6 +17,7 @@ const GuestReserve = () => {
         time:"",
         phone:"",
         guests:"",
+        tableName:""
     });
 
     const inputs = [
@@ -83,17 +84,20 @@ const GuestReserve = () => {
     // const isWeekend = (e) => {
     //     const date = values.date;
     //     // const day = date.getDay();
-    //     const weekday = new Date();
+    //     let weekday = new Date();
+    //     //console.log(date.toString())
+    //     weekday = date.toString();
     //     console.log(weekday)
-    //     let isWeekend = false;
-    //     // isWeekend = (day === 6) || (day === 0);
-    //     if ((weekday.getDay() === 6) || (weekday.getDay() === 0)) console.log("Its a weekend")
-    //     else console.log("Its no weekend")
+    //     // let isWeekend = false;
+    //     // // isWeekend = (day === 6) || (day === 0);
+    //     // if ((weekday.getDay() === 6) || (weekday.getDay() === 0)) console.log("Its a weekend")
+    //     // else console.log("Its no weekend")
     // }
 
     const handleSubmit = async e => {
         e.preventDefault();
         try{
+            //isWeekend();
             await axios.post("/reservations/add",values)
         }catch(err){
             console.log(err)
