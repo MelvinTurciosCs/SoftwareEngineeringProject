@@ -93,7 +93,7 @@ const GuestReserve = () => {
             <FormInput key = {input.id} {...input} value= {values[input.name]} onChange={onChange}/>
             ))}
             <button type="submit" onClick={() => setShow(true)}>Submit</button>
-            <Modal className="HighTrafficDay" onClose={() => setShow(false)} show={show}>
+            <Modal className='HighTrafficDay' title="High Traffic Day" onClose={() => setShow(false)} show={show}>
                 <p className="ModalMessage">This is considered a high traffic there so there might be limited seating.</p>
             </Modal>
             {/* <h1>{values.birthday}</h1> */}

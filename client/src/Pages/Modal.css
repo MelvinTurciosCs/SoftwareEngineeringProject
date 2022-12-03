@@ -1,132 +1,57 @@
-.modal-container {
-  background-color: #636361;
-  border-radius: 30px;
-  height: 20vh;
-}
-.darkBG {
-  background-color: rgba(0, 0, 0, 0.2);
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-}
-
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .modal {
-  width: 250px;
-  height: 170px;
-  background: white;
-  color: white;
-  z-index: 10;
-  border-radius: 16px;
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-}
-
-.modalHeader {
-  height: 50px;
-  background: white;
-  overflow: hidden;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
-
-.heading {
-  margin: 0;
-  padding: 10px;
-  color: whitesmoke;
-  font-weight: 500;
-  font-size: 18px;
-  text-align: center;
-}
-
-.modalContent {
-  padding: 10px;
-  font-size: 14px;
-  color: whitesmoke;
-  text-align: center;
-}
-
-.modalActions {
-  position: absolute;
-  bottom: 2px;
-  margin-bottom: 10px;
-  width: 100%;
-}
-
-.actionsContainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+  width: auto;
+  height: auto;
 }
 
-.closeBtn {
-  cursor: pointer;
-  font-weight: 500;
-  padding: 2px 4px;
-  border-radius: 8px;
-  border: none;
-  font-size: 18px;
-  color: #2c3e50;
-  background: white;
-  transition: all 0.25s ease;
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
-  position: absolute;
-  right: 5%;
-  top: 63%;
-  align-self: center;
-  margin-top: -6px;
-  margin-right: -7px;
+.modal.enter-done {
+  opacity: 1;
+  pointer-events: visible;
 }
 
-.closeBtn:hover {
-  box-shadow: 0 10px 20px -10px whitesmoke;
-  transform: translateY(-5px);
-  background: whitesmoke;
+.modal.exit {
+  opacity: 0;
 }
 
-.GuestBtn {
-  margin-top: 10px;
-  cursor: pointer;
-  font-weight: 500;
-  padding: 11px 28px;
-  border-radius: 40px;
-  font-size: 0.8rem;
-  border: none;
-  color: #fff;
-  border-color: whitesmoke;
-  transition: all 0.25s ease;
+.modal-content {
+  width: 500px;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-200px);
 }
 
-.GuestBtn:hover {
-  box-shadow: 0 10px 20px -10px whitesmoke;
-  transform: translateY(-5px);
-  background: whitesmoke;
+.modal.enter-done .modal-content {
+  transform: translateY(0);
 }
 
-.SignInBtn {
-  margin-top: 10px;
-  cursor: pointer;
-  font-weight: 500;
-  padding: 11px 28px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  border: none;
-  color: #2c3e50;
-  background: #fcfcfc;
-  transition: all 0.25s ease;
+.modal.exit .modal-content {
+  transform: translateY(-200px);
 }
 
-.SignInBtn:hover {
-  box-shadow: 0 10px 20px -10px whitesmoke;
-  transform: translateY(-5px);
-  background: whitesmoke;
+.modal-header,
+.modal-footer {
+  padding: 10px;
 }
+
+.modal-title {
+  margin: 0;
+  color: #161616;
+}
+
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+

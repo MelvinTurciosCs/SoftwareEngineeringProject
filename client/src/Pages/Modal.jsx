@@ -1,53 +1,61 @@
-import React from 'react';
-import styles from "./Modal.css";
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
+import { CSSTransition } from "react-transition-group";
+import "./Modal.css";
 import { Navigate } from 'react-router-dom';
-import { RiCloseLine } from "react-icons/ri";
 
-const Modal = ({ setIsOpen }) => {
-  const [goToReservationPage, setGoToReservationPage] = React.useState(false);
-
+const SubmitMessage = props => {
   const [goToSignIn, setGoToSignIn] = React.useState(false);
 
-  if(goToReservationPage){
-    return <Navigate to="/GuestReserve"/>;
-  }
+  const [goToReservation, setGoToReservation] = React.useState(false);
 
-  if(goToSignIn){
-    return <Navigate to="/Login"/>;
-  }
+    const closeOnEscapeKeyDown = e => {
+      if ((e.charCode || e.keyCode) === 27) {
+        props.onClose();
+      }
+    };
 
-  return (
-    <>
-      <form className='modal-container'>
-        <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
-          <div className={styles.centered}>
-            <div className={styles.modal}>
-              <div className={styles.modalHeader}>
-                <h5 className="heading">Guest Reservation</h5>
-              </div>
-              <button className="closeBtn" onClick={() => setIsOpen(false)}>
-                <RiCloseLine style={{ marginBottom: "-3px" }} />
+    useEffect(() => {
+      document.body.addEventListener("keydown", closeOnEscapeKeyDown);
+      return function cleanup() {
+        document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
+      };
+    }, []);
+
+    if(goToSignIn){
+      return <Navigate to="/register"/>;
+    }
+
+    if(goToSignIn){
+      return <Navigate to="/GuestReservation"/>;
+    }
+  
+
+    return ReactDOM.createPortal(
+      <CSSTransition
+        in={props.show}
+        unmountOnExit
+        timeout={{ enter: 0, exit: 300 }}
+      >
+        <div className="modal" onClick={props.onClose}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <div className="modal-header">
+              <h4 className="modal-title">{props.title}</h4>
+            </div>
+            <div className="modal-body">{props.children}</div>
+            <div className="modal-footer">
+              <button onClick={() => setGoToSignIn} className="button">
+                Continue As Guest
               </button>
-              <div className="modalContent">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-              </div>
-              <div className="modalActions">
-                <div className="actionsContainer">
-                  <button className="GuestBtn" onClick={() => setGoToReservationPage(true)}>
-                    Continue as Guest
-                  </button>
-                  <button
-                    className="SignInBtn"
-                    onClick={() => setGoToSignIn(true)}>
-                    Sign Up
-                  </button>
-              </div>
+              <button onClick={() => setGoToReservation} className="button">
+                Sign Up
+              </button>
             </div>
           </div>
         </div>
-      </form>
-    </>
-  )
-};
+      </CSSTransition>,
+      document.getElementById("root")
+    );
+  };
 
-export default Modal
+export default SubmitMessage;

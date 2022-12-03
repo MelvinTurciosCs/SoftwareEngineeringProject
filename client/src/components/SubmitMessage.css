@@ -4,13 +4,15 @@
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(192, 192, 192, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transition: all 0.3s ease-in-out;
   pointer-events: none;
+  width: auto;
+  height: auto;
 }
 
 .modal.enter-done {
@@ -44,6 +46,7 @@
 
 .modal-title {
   margin: 0;
+  color: #161616;
 }
 
 .modal-body {
