@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 
 export const checkRes = (req,res) =>{
-    const q = "SELECT tableName FROM reservation_details WHERE date = ? AND time = ?"
+    const q = "SELECT tableName FROM reservation_details WHERE reservation_Date = ? AND reservation_Time = ?"
     db.query(q,[req.body.date,req.body.time],(err,data1)=>{
         // req.body.hasReserations = false;
         let test = false;
@@ -42,7 +42,7 @@ export const addReserve = (req,res)=>{
         //if no reservations on this day/time, so all Tables are available
         if (data1.length !== 0)
         {
-            console.log("Found othe resetvations")
+            console.log("Found other resetvations")
            no_Reservations = true;
         };
 
@@ -78,6 +78,7 @@ export const addReserve = (req,res)=>{
             for (let i= 0; i < data2.length;i++)
             {
                 //Check if we have table and equal to or greater than party
+            
                 if(data2[i].on_Hand !== 0 && data2[i].table_size >= req.body.guests)
                 {
                     table_types.push(data2[i].table_name)
@@ -120,20 +121,20 @@ export const addReserve = (req,res)=>{
                 var tableN2 = ""
                 const q2 = "INSERT INTO reservation_details ('name', 'phone_Number', 'email', 'number_Of_Guest', 'reservation_Date', 'reservation_Time', 'table_name') VALUES (?)"
                 const values = [
+                    req.body.fullname,
+                    req.body.phone,
+                    req.body.email,
+                    req.body.guests,
                     req.body.date,
                     req.body.time,
-                    req.body.guests,
-                    req.body.userID,
-                    req.body.fullname,
-                    req.body.email,
-                    req.body.phone,
                     tableN2 
                 ]
 
                 for(let i=0; i<table_types.length; i++)
                 {
-                    values[3] = values[3] + table_types[i] + ", ";
+                    values[6] = values[6] + table_types[i] + ", ";
                 }
+                console.log(values[6])
                 //values[3] = table_types;
                 console.log("All tables free NEW")
                 db.query(q2,[values],(err,data3)=>{

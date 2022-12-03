@@ -7,7 +7,7 @@ import axios from "axios"
 
 const GuestReserve = () => {
 
-    const {currentUser} = useContext(AuthContext);
+   // const {currentUser} = useContext(AuthContext);
 
     const[availT, setAvail] = useState()
 
