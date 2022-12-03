@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
+import { Navigate } from 'react-router-dom';
 import "./SubmitMessage.css";
 
 const SubmitMessage = props => {
+    const [goToSignIn, setGoToSignIn] = React.useState(false);
+
     const closeOnEscapeKeyDown = e => {
       if ((e.charCode || e.keyCode) === 27) {
         props.onClose();
@@ -16,6 +19,10 @@ const SubmitMessage = props => {
         document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
       };
     }, []);
+
+    if(goToSignIn){
+      return <Navigate to="/Login"/>;
+    }
 
     return ReactDOM.createPortal(
       <CSSTransition
@@ -30,7 +37,7 @@ const SubmitMessage = props => {
             </div>
             <div className="modal-body">{props.children}</div>
             <div className="modal-footer">
-              <button onClick={props.onClose} className="button">
+              <button onClick={() => setGoToSignIn(true)} className="button">
                 OK
               </button>
             </div>

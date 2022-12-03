@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import FormInput from "./FormInput";
 import Modal from "./SubmitMessage";
 
-
 const UserReserve = () => {
     const [show, setShow] = useState(false);
 
@@ -77,44 +76,61 @@ const UserReserve = () => {
         }
     ]
 
-    const holidays = [
-        "2023-01-01",
-        "2023-01-16",
-        "2023-02-14", 
-        "2023-02-20",
-        "2023-04-07",
-        "2023-05-29",
-        "2023-11-10",
-        "2023-11-04",
-        "2023-12-24"
-    ]
+    const isWeekend = (e) => {
+        const date = values.date;
+        const date2 = date.toString();
+        const moDa = date2.substring(5,)
+        let weekday = new Date(date2);
+        let is_Weekend = false;
+        let is_Holiday = false;
 
+        const holidays = [
+            "01-01",
+            "01-16",
+            "02-14", 
+            "02-20",
+            "04-07",
+            "05-29",
+            "11-10",
+            "11-04",
+            "12-24"
+        ]
+
+        for(let i = 0; i < holidays.length; i++) {
+            if(moDa === holidays[i])
+            {
+                console.log("is holiday")
+                is_Holiday = true;
+            }
+        }
+
+        if(weekday.getDay() === 5 || weekday.getDay() === 6) 
+        {
+            is_Weekend = true;
+        }
+
+        if(is_Weekend === true || is_Holiday === true)
+        {
+            return true
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        let high_traffic = false;
-
-        for(let i = 0; i < holidays.length; i++) {
-            if(values.date === holidays[i]){
-                high_traffic = true;
-            }
-            else {
-                high_traffic = false;
-            }
-        }
-
-        if(high_traffic === setShow){
-            return <Modal className='HighTrafficDay' title="High Traffic Day" onClose={() => setShow(false)} show={show}>
-            <p className="ModalMessage">This is considered a high traffic day. There might be limited seating.</p>
-            </Modal>
-        }
     };
 
   
 
     const onChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value});
+
+        let specialDay = isWeekend();
+        if(specialDay === true)
+        {
+            return <Modal className='Guest Modal' title="Would you like to continue as a guest?" onClose={() => setShow(false)} show={show}>
+            <p className="ModalMessage">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </Modal>
+        }
     }
 
 
@@ -125,10 +141,7 @@ const UserReserve = () => {
             {inputs.map(input=>(
             <FormInput key = {input.id} {...input} value= {values[input.name]} onChange={onChange}/>
             ))}
-            <button type="submit" onClick={() => setShow(true)}>Submit</button>
-            <Modal className='HighTrafficDay' title="High Traffic Day" onClose={() => setShow(false)} show={show}>
-                <p className="ModalMessage">This is considered a high traffic day. There will be limited seating.</p>
-            </Modal>
+            <button type="submit">Submit</button>
             {/* <h1>{values.birthday}</h1> */}
         </form>
 
