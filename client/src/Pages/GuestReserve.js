@@ -99,13 +99,13 @@ const GuestReserve = () => {
         e.preventDefault();
         try{
             //isWeekend();
-            await axios.post("/reservations/add",values)
+            let res = await axios.post("/reservations/add",values)
             //let reserv = await axios.get("/reservations/checkRes",values)
-
-            // if(reserv === false)
-            // {
-            //     console.log("No reservations on that day")
-            // }
+            console.log("Hello")
+            if(res === false)
+            {
+                console.log("No reservations on that day")
+            }
         }catch(err){
             console.log(err)
         }

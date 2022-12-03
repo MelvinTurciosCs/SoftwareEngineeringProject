@@ -1,5 +1,6 @@
 import { db } from "../db.js";
 import { register } from "./authen.js";
+import jwt from "jsonwebtoken";
 
 
 export const checkRes = (req,res) =>{
@@ -39,8 +40,9 @@ export const addReserve = (req,res)=>{
         
         let no_Reservations = false;
         //if no reservations on this day/time, so all Tables are available
-        if (data1.length === 0)
+        if (data1.length !== 0)
         {
+            console.log("Found othe resetvations")
            no_Reservations = true;
         };
 
@@ -55,9 +57,15 @@ export const addReserve = (req,res)=>{
                 for (let j = 0; j < data2.length;j++)
                 {
                     //if tables same name decreament on_Hand
+
+                    // let test = data1[i].table_name
+                    // let numCom = test.split(",").length-1
+                    // let test = parseInt(data1[i].table_name)
+                    // console.log(test)
+
                     if(data1[i].table_name === data2[j].table_name)
                     {
-
+                        console.log("decremint")
                         data2[j].on_Hand = data2[j].on_Hand - 1
                     }
                 } 
@@ -106,10 +114,21 @@ export const addReserve = (req,res)=>{
                 }
             }
 
+
             if(Avail === false && combo === false)
             {
                 console.log("No reservations available")
-                return 1
+                const tTable = "SELECT * FROM truth_table WHERE bVal = ?"
+                db.query(tTable,[req.body.hasReserations],(err,data5)=>{
+                // const test2 = false;
+                // const token2 = jwt.sign(test2 , "jwtkey");
+                // res.cookie("access_token2", token2,{
+                //     httpOnly:true
+                // })
+                // return fals
+                    console.log(data5)
+                    return res.json(data5)
+                })
             }
             
           
