@@ -17,7 +17,7 @@ const GuestReserve = () => {
         time:"",
         phone:"",
         guests:"",
-        table:""
+        table:"",
     });
 
     const inputs = [

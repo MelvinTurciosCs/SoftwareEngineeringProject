@@ -6,16 +6,7 @@ export const addReserve = (req,res)=>{
     // res.json("from controller")
     //const {currentUser} = useContext(AuthContext);
     //Declare query
-     const q2 = "INSERT INTO reservation_details (`name`, `phone_Number`, `email`, `number_Of_Guest`, `reservation_Date`, `reservation_Time`, `table_name`) VALUES (?)"
-        const values = [
-        req.body.fullname,
-        req.body.phone,
-        req.body.email,
-        req.body.guests,
-        req.body.date,
-        req.body.time,
-        req.body.table
-    ]
+
 
 
 
@@ -24,30 +15,24 @@ export const addReserve = (req,res)=>{
     const q = "SELECT table_name FROM reservation_details WHERE reservation_Date = ? AND reservation_Time = ?"
     db.query(q,[req.body.date,req.body.time],(err,data1)=>{
         //console.log(data1) //displays data1
-        
-        if (data1.length === 0)
-        {
-            
-            db.query(q2,[values],(err,data)=>{
-                console.log(data)
-                if(err) return res.json(err)
-                return res.json(data)
-            });
-        }
 
-        //gets all tables that we have on hand
-        const tableT = "SELECT table_name, on_Hand, table_size FROM table_tracker"
-        db.query(tableT,(err,data2)=>{
-        //console.log(data2) //display data1
-        //data1[0].table_name gets one element from data1 query
-        //data1.length gets the size
-        //modify tables on hand
-        //iterates through tables taken
 
-    
+    //     gets all tables that we have on hand
+           const tableT = "SELECT table_name, on_Hand, table_size FROM table_tracker"
+           db.query(tableT,(err,data2)=>{
+    //     //console.log(data2) //display data1
+    //     //data1[0].table_name gets one element from data1 query
+    //     //data1.length gets the size
+    //     //modify tables on hand
+    //     //iterates through tables taken
+   
+
+
+
         
         for(let i = 0; i < data1.length;i++)
         {
+            
             //iterates through list of tables on Hand
             for (let j = 0; j < data2.length;j++)
             {
@@ -62,7 +47,17 @@ export const addReserve = (req,res)=>{
         var Avail = false;
         var tableName;
 
-
+        const q2 = "INSERT INTO reservation_details (`name`, `phone_Number`, `email`, `number_Of_Guest`, `reservation_Date`, `reservation_Time`, `table_name`) VALUES (?)"
+        var TableN = ""
+        const values = [
+        req.body.fullname,
+        req.body.phone,
+        req.body.email,
+        req.body.guests,
+        req.body.date,
+        req.body.time,
+        TableN
+        ]
         //req.body.table = data2[0].table_name;
         //iterates through list of tables on Hand
         for (let i= 0; i < data2.length;i++)
@@ -71,8 +66,9 @@ export const addReserve = (req,res)=>{
             if(data2[i].on_Hand !== 0 && data2[i].table_size >= req.body.guests)
             {
                 Avail = true;
-                req.body.table = data2[i].table_name;
+                TableN = data2[i].table_name;
                 db.query(q2,[values],(err,data)=>{
+                    console.log(data)
                     if(err) return res.json(err)
                     return res.json(data)
                 });
@@ -107,15 +103,19 @@ export const addReserve = (req,res)=>{
         if(combo === false && Avail === false){
             return //something, might have to make two functions to return if no reservation can be made
         }
+
+        
+
+
        // console.log(table_types)
         //if we can combine tables, add a reservation in the reservation_table for each table being used
         if(combo === true){
             //for loop query
             for (var i = 0; i < table_types.length;i++)
             {
-                req.body.phone = "11111111"
-                req.body.table = table_types[i]
+                TableN = table_types[i]
                 db.query(q2,[values],(err,data)=>{
+                    console.log(data)
                     if(err) return res.json(err)
                     return res.json(data)
                 });
@@ -123,26 +123,26 @@ export const addReserve = (req,res)=>{
         }
 
 
-    })
+     })
 
 
-        // let total_tables = [2,3,4,5];
+    //     // let total_tables = [2,3,4,5];
 
-        // //find if single table can accomidate guests
-        // if(req.body.guests > total_tables.length+1)
-        // {
-        //     let addTables = 0;
-        //     let tTables = total_tables.length 
-        //     while(addTables < req.body.guests)
-        //     {
-        //         total_tables[totl]
-        //     }
-        // }
+    //     // //find if single table can accomidate guests
+    //     // if(req.body.guests > total_tables.length+1)
+    //     // {
+    //     //     let addTables = 0;
+    //     //     let tTables = total_tables.length 
+    //     //     while(addTables < req.body.guests)
+    //     //     {
+    //     //         total_tables[totl]
+    //     //     }
+    //     // }
 
-        // //find remaining tables
-        // for(let i=0; i<data.length; i++){
-        //     let curTable = data[i].guests;
-        // }
+    //     // //find remaining tables
+    //     // for(let i=0; i<data.length; i++){
+    //     //     let curTable = data[i].guests;
+    //     // }
     })
 
 
