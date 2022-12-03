@@ -63,7 +63,12 @@ label {
 
 .TopBar .MakeReservation {
   margin-left: auto;
-  margin-right: 20px;
+  margin-right: 270px;
+}
+
+.TopBar .Points{
+  margin-left: auto;
+  margin-right: 130px;
 }
 
 .BottomBar {
@@ -185,8 +190,6 @@ section {
   align-items: center;
 }
 
-
-/* hunters css */
 
 .Welcome-form-container {
   display: flex;

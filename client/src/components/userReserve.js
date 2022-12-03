@@ -92,6 +92,7 @@ const UserReserve = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         let high_traffic = false;
 
         for(let i = 0; i < holidays.length; i++) {
@@ -103,12 +104,14 @@ const UserReserve = () => {
             }
         }
 
-        if(high_traffic === true){
+        if(high_traffic === setShow){
             return <Modal className='HighTrafficDay' title="High Traffic Day" onClose={() => setShow(false)} show={show}>
-            <p className="ModalMessage">This is considered a high traffic there so there might be limited seating.</p>
+            <p className="ModalMessage">This is considered a high traffic day. There might be limited seating.</p>
             </Modal>
         }
     };
+
+  
 
     const onChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value});
@@ -122,8 +125,10 @@ const UserReserve = () => {
             {inputs.map(input=>(
             <FormInput key = {input.id} {...input} value= {values[input.name]} onChange={onChange}/>
             ))}
-            <button type="submit" onClick={this.handleSubmit}>Submit</button>
-            
+            <button type="submit" onClick={() => setShow(true)}>Submit</button>
+            <Modal className='HighTrafficDay' title="High Traffic Day" onClose={() => setShow(false)} show={show}>
+                <p className="ModalMessage">This is considered a high traffic day. There will be limited seating.</p>
+            </Modal>
             {/* <h1>{values.birthday}</h1> */}
         </form>
 

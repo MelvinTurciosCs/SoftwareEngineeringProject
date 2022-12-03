@@ -28,10 +28,10 @@ export default function LandingPage() {
        modules={[Autoplay]}
        className="mySwiper"
       >
-        <SwiperSlide><img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img></SwiperSlide>
-        <SwiperSlide><img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img></SwiperSlide>
-        <SwiperSlide><img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img></SwiperSlide>
-        <SwiperSlide><img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img></SwiperSlide>
+        <SwiperSlide><img src={require('./assets/pexels-ekrulila-2452277.jpg')} className='image1' alt='logo'></img></SwiperSlide>
+        <SwiperSlide><img src={require('./assets/pexels-ekrulila-2452277.jpg')} className='image2' alt='logo'></img></SwiperSlide>
+        <SwiperSlide><img src={require('./assets/pexels-ekrulila-2452277.jpg')} className='image3' alt='logo'></img></SwiperSlide>
+        <SwiperSlide><img src={require('./assets/pexels-ekrulila-2452277.jpg')} className='image3' alt='logo'></img></SwiperSlide>
       </Swiper>
       <div className='TopBar'>
         <header>
