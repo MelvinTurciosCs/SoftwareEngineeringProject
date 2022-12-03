@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import FormInput from "./FormInput";
 import Modal from "../Pages/Modal";
 
+import { AuthContext } from '../context/authContext';
+
 const UserReserve = () => {
     const [show, setShow] = useState(false);
 
