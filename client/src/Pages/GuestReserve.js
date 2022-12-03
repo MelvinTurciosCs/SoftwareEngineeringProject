@@ -4,11 +4,14 @@ import React from 'react'
 import { useState } from "react";
 import FormInput from "../components/FormInput";
 import axios from "axios";
-import { AuthContext } from '../context/authContext';
+import Modal from "./Modal";
 
 const GuestReserve = () => {
 
     //const {currentUser} = useContext(AuthContext);
+
+    const [show, setShow] = useState(false);
+
 
     const[availT, setAvail] = useState()
 
@@ -94,14 +97,8 @@ const GuestReserve = () => {
 
         const holidays = [
             "01-01",
-            "01-16",
-            "02-14", 
-            "02-20",
-            "04-07",
-            "05-29",
-            "11-10",
-            "11-04",
-            "12-24"
+            "12-25",
+            "11-23",
         ]
 
         for(let i = 0; i < holidays.length; i++) {
@@ -146,7 +143,7 @@ const GuestReserve = () => {
  
     const onChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value});
-        let special = isWeekend();
+        //let special = isWeekend();
     }
 
     //console.log(values);sdf
@@ -156,11 +153,15 @@ const GuestReserve = () => {
             {inputs.map(input=>(
             <FormInput key = {input.id} {...input} value= {values[input.name]} onChange={onChange}/>
             ))}
-            <button type="submit">Submit</button>
-            {/* {isWeekend()? alert("You are choosing a high traffic day. A hold fee is required") : <span>goodbye</span>} */}
-            {/* <h1>{values.birthday}</h1> */}
+            <button type="submit" >Submit</button>
         </form>
         {/* {isWeekend} */}
+
+        {/* <button type="submit" onClick={() => setShow(true)}>Submit</button>
+            {isWeekend()?<span><Modal className='Guest Modal' title="This is a high traffic day" onClose={() => setShow(false)} show={show}>
+                <p className="ModalMessage">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </Modal></span> : <span>Goobye</span>} */}
+          {/* Works on team members code, can't get it to work on mine */}
 
     </div>
 };

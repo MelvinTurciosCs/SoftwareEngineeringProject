@@ -1,18 +1,28 @@
 import "../App.css"
+import React, { useContext } from 'react'
 import { useState } from "react";
 import FormInput from "./FormInput";
+import axios from "axios";
 
 import { AuthContext } from '../context/authContext';
 
 const UserReserve = () => {
 
+    const [show, setShow] = useState(false);
+
+    const {currentUser} = useContext(AuthContext);
+
+    const[availT, setAvail] = useState()
+
     const[values, setValues] = useState({
-        fullname:"",
-        email:"",
+        fullname:currentUser.fullname,
+        email:currentUser.email,
         date:"",
         time:"",
-        phone:"",
-        guests:""
+        phone:currentUser.phone,
+        guests:"",
+        tableName:"",
+        hasReserations:"true"
     });
     
     const inputs = [
@@ -48,9 +58,25 @@ const UserReserve = () => {
         }
     ]
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
-
+        try{
+           let res = await axios.post("/reservations/add",values)
+            //let res = await axios.get("/reservations/checkRes",values)
+            setAvail(res.data)
+            console.log(res.data)
+            console.log(availT)
+            if(availT === true)
+            {
+                console.log("No resevation available")
+            }
+            else
+            {
+                console.log("It is available")
+            }
+        }catch(err){
+            console.log(err)
+        }
     };
 
     const onChange = (e) => {

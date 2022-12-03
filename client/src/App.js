@@ -11,6 +11,9 @@ import UserReserve from "./components/userReserve";
 import Login from "./Pages/Login"
 import Register from "./Pages/Register"
 import UserHome from "./Pages/userHome"
+import Confirmation from "./Pages/Confirmation";
+import Payment from "./components/Payment";
+import SubmitMessage from "./components/SubmitMessage";
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
           <Route path="/GuestReserve" element={<GuestReserve />}/>
           <Route path="/userReserve" element={<UserReserve />}/>
           <Route path="/userHome" element={<UserHome />}/>
+          <Route path="/Confirmation" element={<Confirmation />} />
+          <Route path="/Payment" element={<Payment />} />
+          <Route path="/Submit" element={<SubmitMessage />} />
         </Routes>
       </Router>
   );
