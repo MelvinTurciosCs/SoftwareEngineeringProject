@@ -2,15 +2,9 @@ import "../App.css"
 import { useContext } from 'react'
 import React from 'react'
 import { useState } from "react";
-import FormInput from "../components/FormInput";
-import axios from "axios";
-import { AuthContext } from '../context/authContext';
+import FormInput from "./FormInput";
 
 const GuestReserve = () => {
-
-    const {currentUser} = useContext(AuthContext);
-
-    const[availT, setAvail] = useState()
 
     const[values, setValues] = useState({
         fullname:"",
