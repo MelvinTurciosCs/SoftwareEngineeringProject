@@ -34,7 +34,7 @@ export const addReserve = (req,res)=>{
     
 
     //grab reserations during same date/time
-    const q = "SELECT table_name FROM reservations WHERE date = ? AND time = ?"
+    const q = "SELECT table_name FROM reservation_details WHERE reservation_Date = ? AND reservation_Time = ?"
     db.query(q,[req.body.date,req.body.time],(err,data1)=>{
         //console.log(data1) //displays data1
         
@@ -115,21 +115,6 @@ export const addReserve = (req,res)=>{
             }
 
 
-            if(Avail === false && combo === false)
-            {
-                console.log("No reservations available")
-                const tTable = "SELECT * FROM truth_table WHERE bVal = ?"
-                db.query(tTable,[req.body.hasReserations],(err,data5)=>{
-                // const test2 = false;
-                // const token2 = jwt.sign(test2 , "jwtkey");
-                // res.cookie("access_token2", token2,{
-                //     httpOnly:true
-                // })
-                // return fals
-                    console.log(data5)
-                    return res.json(data5)
-                })
-            }
             
           
                 var tableN2 = ""
@@ -142,7 +127,7 @@ export const addReserve = (req,res)=>{
                     req.body.fullname,
                     req.body.email,
                     req.body.phone,
-                    tableN2
+                    tableN2 
                 ]
 
                 for(let i=0; i<table_types.length; i++)
