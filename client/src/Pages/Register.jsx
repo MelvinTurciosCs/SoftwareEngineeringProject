@@ -13,7 +13,8 @@ const Register = () => {
     fullname:"",
     email:"",
     phone:"",
-    password:""
+    password:"",
+    points: 0
   })
 
   //to catch registering a username already made
@@ -52,14 +53,14 @@ const Register = () => {
         </header>
       </div>
     <div className='userSys'>
-        <form>
-            <h1 className='createAccount'>Create Account</h1>
-            <input required type="text" placeholder='username' name = 'username' onChange={handleChange}/>
+        <h1>Register</h1>
+        <form onSubmit={handleSubmit}>
+            <input type="text" placeholder='username' name = 'username' onChange={handleChange} required/>
             <input required type="text" placeholder='Full Name' name = 'fullname' onChange={handleChange}/>
             <input required type="email" placeholder='email' name = 'email' onChange={handleChange} />
             <input required type="text" placeholder='phone' name = 'phone' onChange={handleChange}/>
             <input required type="password" placeholder='password' name = 'password' onChange={handleChange}/>
-            <button onClick = {handleSubmit}>Register</button>
+            <button type="submit" >Register</button>
             {err && <p>{err}</p>}
             <span>Already have an account? <Link to="/login">Login</Link></span>
         </form>

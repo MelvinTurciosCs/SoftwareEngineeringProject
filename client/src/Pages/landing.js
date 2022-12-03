@@ -13,7 +13,11 @@ export default function LandingPage() {
   const [isOpen, setIsOpen] = useState(false);
 
   if(goToSignIn){
-    return <Navigate to="/Login"/>;
+    return <Navigate to="/login"/>;
+  }
+
+  if(goToReservationPage){
+    return <Navigate to="/guestReserve"/>;
   }
 
   return (
@@ -42,6 +46,7 @@ export default function LandingPage() {
             <li><a href='/#'>Catering</a></li>
             <li><a href='/#'>Contact</a></li>
             <button className='SignIn'  onClick={() => setGoToSignIn(true)}>Sign In</button>
+            {/* <button className='MakeReservation'  onClick={() => setGoToReservationPage(true)}>Make Reservation</button> */}
           </ul>
         </header>
       </div>

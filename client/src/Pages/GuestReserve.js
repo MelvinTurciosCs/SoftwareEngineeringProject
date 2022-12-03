@@ -1,22 +1,32 @@
 import "../App.css"
+import { useContext } from 'react'
+import React from 'react'
 import { useState } from "react";
-import FormInput from "./FormInput";
+import FormInput from "../components/FormInput";
+import axios from "axios";
+import { AuthContext } from '../context/authContext';
 
 const GuestReserve = () => {
 
+    const {currentUser} = useContext(AuthContext);
+
+    const[availT, setAvail] = useState()
+
     const[values, setValues] = useState({
-        fullName:"",
+        fullname:"",
         email:"",
         date:"",
         time:"",
-        phoneNumber:"",
-        numGuests:""
+        phone:"",
+        guests:"",
+        tableName:"",
+        hasReserations:"true"
     });
-    
+
     const inputs = [
         {
             id:1,
-            name:"fullName",
+            name:"fullname",
             type:"text",
             placeholder:"Full Name",
             errorMessage:"Username should be 3-16 characters and shouldn't include and special character!",
@@ -35,7 +45,7 @@ const GuestReserve = () => {
         },
         {
             id:3,
-            name:"phoneNumber",
+            name:"phone",
             type:"number",
             placeholder:"Phone Number",
             errorMessage:"Not a valid phone number.",
@@ -64,7 +74,7 @@ const GuestReserve = () => {
         },
         {
             id:6,
-            name:"numGuests",
+            name:"guests",
             type:"number",
             placeholder:"Number of Guests",
             errorMessage:"Passwords don't match",
@@ -74,15 +84,72 @@ const GuestReserve = () => {
         }
     ]
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    };
+    const isWeekend = (e) => {
+        const date = values.date;
+        const date2 = date.toString();
+        const moDa = date2.substring(5,)
+        let weekday = new Date(date2);
+        let is_Weekend = false;
+        let is_Holiday = false;
 
-    const onChange = (e) => {
-        setValues({...values, [e.target.name]: e.target.value});
+        const holidays = [
+            "01-01",
+            "01-16",
+            "02-14", 
+            "02-20",
+            "04-07",
+            "05-29",
+            "11-10",
+            "11-04",
+            "12-24"
+        ]
+
+        for(let i = 0; i < holidays.length; i++) {
+            if(moDa === holidays[i])
+            {
+                console.log("is holiday")
+                is_Holiday = true;
+            }
+        }
+
+        if(weekday.getDay() === 5 || weekday.getDay() === 6) 
+        {
+            is_Weekend = true;
+        }
+
+        if(is_Weekend === true || is_Holiday === true)
+        {
+            return true
+        }
     }
 
-    console.log(values);
+    const handleSubmit = async e => {
+        e.preventDefault();
+        try{
+           let res = await axios.post("/reservations/add",values)
+            //let res = await axios.get("/reservations/checkRes",values)
+            setAvail(res.data)
+            console.log(res.data)
+            console.log(availT)
+            if(availT === true)
+            {
+                console.log("No resevation available")
+            }
+            else
+            {
+                console.log("It is available")
+            }
+        }catch(err){
+            console.log(err)
+        }
+    };
+ 
+    const onChange = (e) => {
+        setValues({...values, [e.target.name]: e.target.value});
+        let special = isWeekend();
+    }
+
+    //console.log(values);sdf
     return <div className = "GuestReserve">
         <form onSubmit={handleSubmit}>
         <h1>Reserve a Table</h1>
@@ -90,8 +157,10 @@ const GuestReserve = () => {
             <FormInput key = {input.id} {...input} value= {values[input.name]} onChange={onChange}/>
             ))}
             <button type="submit">Submit</button>
+            {isWeekend()? alert("You are choosing a high traffic day. A hold fee is required") : <span>goodbye</span>}
             {/* <h1>{values.birthday}</h1> */}
         </form>
+        {/* {isWeekend} */}
 
     </div>
 };
