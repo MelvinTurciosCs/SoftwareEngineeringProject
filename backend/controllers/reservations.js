@@ -20,7 +20,7 @@ export const checkRes = (req,res) =>{
         //There are reservations for this time, so grab them
         const tableT = "SELECT * FROM table_tracker"
         db.query(tableT,(err,data2)=>{
-
+            console.log(data2)
             if(no_Reservations === true)
             {
                 for(let i = 0; i < data1.length; i++)
@@ -44,14 +44,14 @@ export const checkRes = (req,res) =>{
                 }
             }
 
-            var Avail = false;
+            let Avail = false;
             let table_types = [];
-            console.log(Avail)
-
+            console.log("test")
+            console.log(req.body.guests)
             //iterates through list of tables on Hand
             for (let i= 0; i < data2.length;i++)
             {
-                console.log("We checking")
+                // console.log("We checking")
                 //Check if we have table and equal to or greater than party
                 if(data2[i].on_Hand !== 0 && data2[i].table_size >= req.body.guests)
                 {
@@ -61,14 +61,13 @@ export const checkRes = (req,res) =>{
                 }
             } 
             console.log("hello")
-
+            console.log(Avail)
             var combo = false;
             var total = 0;
             var numGuests = req.body.guests
             //if there is nothing available, try a combination
             if(Avail === false)
             {
-              
                 //look through every table type
                 for(var i = 0; i < data2.length; i++)
                 {
@@ -92,19 +91,6 @@ export const checkRes = (req,res) =>{
 
             if(Avail === false && combo === false)
             {
-                // console.log("No reservations available")
-                // const tTable = "SELECT * FROM truth_table WHERE bVal = ?"
-                // db.query(tTable,[req.body.hasReserations],(err,data5)=>{
-                // // const test2 = false;
-                // // const token2 = jwt.sign(test2 , "jwtkey");
-                // // res.cookie("access_token2", token2,{
-                // //     httpOnly:true
-                // // })
-                // // return fals
-                //     console.log(data5)
-                //     return res.json(data5)
-                // })
-                // return 1
                 res.json("true")
             }
             else
@@ -202,21 +188,12 @@ export const addReserve = (req,res)=>{
             if(Avail === false && combo === false)
             {
                 console.log("No reservations available")
-                // const tTable = "SELECT * FROM truth_table WHERE bVal = ?"
-                // db.query(tTable,[req.body.hasReserations],(err,data5)=>{
-                // // const test2 = false;
-                // // const token2 = jwt.sign(test2 , "jwtkey");
-                // // res.cookie("access_token2", token2,{
-                // //     httpOnly:true
-                // // })
-                // // return fals
-                //     console.log(data5)
-                //     return res.json(data5)
-                // })
-                // return 1
+
+                return res.json = "true"
+           
             }
             
-          
+            //res.json = "false"
                 var tableN2 = ""
                 const q2 = "INSERT INTO reservations (`date`,`time`,`guests`,`tableName`,`userID`,`fullname`,`email`,`phone`) VALUES (?)"
                 const values = [

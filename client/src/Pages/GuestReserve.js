@@ -126,14 +126,19 @@ const GuestReserve = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         try{
-            let res = await axios.post("/reservations/add",values)
-            // let res = await axios.get("/reservations/checkRes",values)
-            // setAvail(res.data)
-            // console.log(availT)
-            // if(availT === 'true')
-            // {
-            //     console.log("No reservations on that day")
-            // }
+           let res = await axios.post("/reservations/add",values)
+            //let res = await axios.get("/reservations/checkRes",values)
+            setAvail(res.data)
+            console.log(res.data)
+            console.log(availT)
+            if(availT === true)
+            {
+                console.log("No resevation available")
+            }
+            else
+            {
+                console.log("It is available")
+            }
         }catch(err){
             console.log(err)
         }
@@ -141,7 +146,7 @@ const GuestReserve = () => {
  
     const onChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value});
-        // isWeekend();
+        let special = isWeekend();
     }
 
     //console.log(values);sdf
@@ -152,6 +157,7 @@ const GuestReserve = () => {
             <FormInput key = {input.id} {...input} value= {values[input.name]} onChange={onChange}/>
             ))}
             <button type="submit">Submit</button>
+            {isWeekend()? alert("You are choosing a high traffic day. A hold fee is required") : <span>goodbye</span>}
             {/* <h1>{values.birthday}</h1> */}
         </form>
         {/* {isWeekend} */}
