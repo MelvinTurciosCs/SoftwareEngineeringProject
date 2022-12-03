@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 
 export const checkRes = (req,res) =>{
-    const q = "SELECT tableName FROM reservations WHERE date = ? AND time = ?"
+    const q = "SELECT tableName FROM reservation_details WHERE date = ? AND time = ?"
     db.query(q,[req.body.date,req.body.time],(err,data1)=>{
         // req.body.hasReserations = false;
         let test = false;
@@ -34,7 +34,7 @@ export const addReserve = (req,res)=>{
     
 
     //grab reserations during same date/time
-    const q = "SELECT tableName FROM reservations WHERE date = ? AND time = ?"
+    const q = "SELECT table_name FROM reservations WHERE date = ? AND time = ?"
     db.query(q,[req.body.date,req.body.time],(err,data1)=>{
         //console.log(data1) //displays data1
         
@@ -133,16 +133,16 @@ export const addReserve = (req,res)=>{
             
           
                 var tableN2 = ""
-                const q2 = "INSERT INTO reservations (`date`,`time`,`guests`,`tableName`,`userID`,`fullname`,`email`,`phone`) VALUES (?)"
+                const q2 = "INSERT INTO reservation_details ('name', 'phone_Number', 'email', 'number_Of_Guest', 'reservation_Date', 'reservation_Time', 'table_name') VALUES (?)"
                 const values = [
                     req.body.date,
                     req.body.time,
                     req.body.guests,
-                    tableN2,
                     req.body.userID,
                     req.body.fullname,
                     req.body.email,
-                    req.body.phone
+                    req.body.phone,
+                    tableN2
                 ]
 
                 for(let i=0; i<table_types.length; i++)
