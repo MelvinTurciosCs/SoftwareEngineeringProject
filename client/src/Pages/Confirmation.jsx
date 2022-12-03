@@ -4,8 +4,6 @@ import { AuthContext } from '../context/authContext';
 import '../App.css';
 
 function Confirmation() {
-  const { currentUser } = useContext(AuthContext);
-
   const[values, setValues] = useState({
     fullName:"",
     email:"",
