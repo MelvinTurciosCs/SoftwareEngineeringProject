@@ -1,8 +1,11 @@
 import "../App.css"
 import React, { useState } from "react";
 import FormInput from "./FormInput";
+import Modal from "./SubmitMessage";
+
 
 const UserReserve = () => {
+    const [show, setShow] = useState(false);
 
     const[values, setValues] = useState({
         fullName:"",
@@ -89,8 +92,7 @@ const UserReserve = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        let high_traffic = new Boolean(false);
+        let high_traffic = false;
 
         for(let i = 0; i < holidays.length; i++) {
             if(values.date === holidays[i]){
@@ -102,7 +104,9 @@ const UserReserve = () => {
         }
 
         if(high_traffic === true){
-            
+            return <Modal className='HighTrafficDay' title="High Traffic Day" onClose={() => setShow(false)} show={show}>
+            <p className="ModalMessage">This is considered a high traffic there so there might be limited seating.</p>
+            </Modal>
         }
     };
 
@@ -118,7 +122,8 @@ const UserReserve = () => {
             {inputs.map(input=>(
             <FormInput key = {input.id} {...input} value= {values[input.name]} onChange={onChange}/>
             ))}
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={this.handleSubmit}>Submit</button>
+            
             {/* <h1>{values.birthday}</h1> */}
         </form>
 

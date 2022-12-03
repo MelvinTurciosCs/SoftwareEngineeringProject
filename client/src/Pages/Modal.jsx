@@ -26,8 +26,8 @@ const SubmitMessage = props => {
       return <Navigate to="/register"/>;
     }
 
-    if(goToSignIn){
-      return <Navigate to="/GuestReservation"/>;
+    if(goToReservation){
+      return <Navigate to="/GuestReserve"/>;
     }
   
 
@@ -44,10 +44,10 @@ const SubmitMessage = props => {
             </div>
             <div className="modal-body">{props.children}</div>
             <div className="modal-footer">
-              <button onClick={() => setGoToSignIn} className="button">
+              <button onClick={() => setGoToReservation(true)} className="button">
                 Continue As Guest
               </button>
-              <button onClick={() => setGoToReservation} className="button">
+              <button onClick={() => setGoToSignIn(true)} className="button">
                 Sign Up
               </button>
             </div>
