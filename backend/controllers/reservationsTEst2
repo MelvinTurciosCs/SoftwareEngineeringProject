@@ -31,17 +31,48 @@ export const addReserve = (req,res)=>{
     //     return res.json(data)
     // });
     
+    
+
 
     //grab reserations during same date/time
     const q = "SELECT tableName FROM reservations WHERE date = ? AND time = ?"
     db.query(q,[req.body.date,req.body.time],(err,data1)=>{
         //console.log(data1) //displays data1
         
-        let no_Reservations = false;
         //if no reservations on this day/time, so all Tables are available
         if (data1.length === 0)
         {
-           no_Reservations = true;
+            //check to see if a combination is needed
+            const tableT = "SELECT * FROM table_tracker"
+            db.query(tableT,(err,data2)=>{
+                //iterates through list of tables on Hand
+                for (let i= 0; i < data2.length;i++)
+                {
+                    //Check if we have table and equal to or greater than party
+                    if(data2[i].on_Hand !== 0 && data2[i].table_size >= req.body.guests)
+                    {
+                        var tableN2 = ""
+                        const q2 = "INSERT INTO reservations (`date`,`time`,`guests`,`tableName`,`userID`,`fullname`,`email`,`phone`) VALUES (?)"
+                        const values = [
+                            req.body.date,
+                            req.body.time,
+                            req.body.guests,
+                            tableN2,
+                            req.body.userID,
+                            req.body.fullname,
+                            req.body.email,
+                            req.body.phone
+                        ]
+                        values[3] = data2[i].table_name;
+                        console.log("All tables free NEW")
+                        db.query(q2,[values],(err,data3)=>{
+                            //console.log(data)"
+                            if(err) return res.json(err)
+                            return res.json(data3)
+                        });
+                    }
+                } 
+            }) 
         };
 
 
@@ -57,92 +88,91 @@ export const addReserve = (req,res)=>{
                     //if tables same name decreament on_Hand
                     if(data1[i].table_name === data2[j].table_name)
                     {
-
                         data2[j].on_Hand = data2[j].on_Hand - 1
                     }
                 } 
             }
 
-            var Avail = false;
-            let table_types = [];
+            // var Avail = false;
+            // var tableName;
 
+            //req.body.table = data2[0].table_name;
             //iterates through list of tables on Hand
             for (let i= 0; i < data2.length;i++)
             {
                 //Check if we have table and equal to or greater than party
                 if(data2[i].on_Hand !== 0 && data2[i].table_size >= req.body.guests)
                 {
-                    table_types.push(data2[i].table_name)
-                    Avail = true;
-                    break;
+                    var tableN = ""
+                    const q3 = "INSERT INTO reservations (`date`,`time`,`guests`,`tableName`,`userID`,`fullname`,`email`,`phone`) VALUES (?)"
+                    const values2 = [
+                        req.body.date,
+                        req.body.time,
+                        req.body.guests,
+                        tableN,
+                        req.body.userID,
+                        req.body.fullname,
+                        req.body.email,
+                        req.body.phone
+                    ]
+                    // Avail = true;
+                    values2[3] = data2[i].table_name;
+                    db.query(q3,[values2],(err,data)=>{
+                        if(err) return res.json(err)
+                        return res.json(data)
+                    });
                 }
             } 
+        })
+
+//ABOVE WORKS
 
 
-            var combo = false;
-            var total = 0;
-            var numGuests = req.body.guests
-            //if there is nothing available, try a combination
-            if(Avail === false)
-            {
-              
-                //look through every table type
-                for(var i = 0; i < data2.length; i++)
-                {
-                    //add available tables until it meets or exceedes number of guests
-                    for(var j = 0; j< data2[i].on_Hand; j++){
-                        if(total < numGuests){
-                            console.log("Adding to total")
-                            total = total + data2[i].table_size
-                            data2[j].on_Hand = data2[j].on_Hand - 1
-                            table_types.push(data2[i].table_name)
-                        }
-                    }
-                    if(total>=numGuests)
-                    {
-                        console.log("We found combo")
-                        combo = true;
-                    }
-                }
-            }
+        //     //if there is no single table available, find combo of tables
+        //     var combo = false;
+        //     let table_types = [];
+        //     var total = 0;
+        //     if(Avail === false)
+        //     {
+        //         //look through every table type
+        //         for(var i = 0; i < data2.length;i++)
+        //         {
+        //             //add available tables until it meets or exceedes number of guests
+        //             for(var j = 0; j< data2[i].on_Hand; j++){
+        //                 if(total < req.body.guests){
+        //                     total = total + data2[i].table_size
+        //                     data2[j].on_Hand = data2[j].on_Hand - 1
+        //                     table_types.push(data2[i].table_name)
+        //                 }
+        //                 else {
+        //                     combo = true;
+        //                     break;
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     //no table avaialable, inform customer to try again
+        //     if(combo === false && Avail === false){
+        //         return //something, might have to make two functions to return if no reservation can be made
+        //     }
+        // // console.log(table_types)
+        //     //if we can combine tables, add a reservation in the reservation_table for each table being used
+        //     if(combo === true){
+        //         //for loop query
+        //         // for (var i = 0; i < table_types.length;i++)
+        //         // {
+        //             //req.body.phone = "11111111"
+        //             req.body.table = table_types[i]
+        //             db.query(q2,[values],(err,data)=>{
+        //                 if(err) return res.json(err)
+        //                 return res.json(data)
+        //             });
+        //        // }
+        //     }
 
-            if(Avail === false && combo === false)
-            {
-                console.log("No reservations available")
-                return 1
-            }
-            
-          
-                var tableN2 = ""
-                const q2 = "INSERT INTO reservations (`date`,`time`,`guests`,`tableName`,`userID`,`fullname`,`email`,`phone`) VALUES (?)"
-                const values = [
-                    req.body.date,
-                    req.body.time,
-                    req.body.guests,
-                    tableN2,
-                    req.body.userID,
-                    req.body.fullname,
-                    req.body.email,
-                    req.body.phone
-                ]
-
-                for(let i=0; i<table_types.length; i++)
-                {
-                    values[3] = values[3] + table_types[i] + ", ";
-                }
-                //values[3] = table_types;
-                console.log("All tables free NEW")
-                db.query(q2,[values],(err,data3)=>{
-                    //console.log(data)"
-                    if(err) return res.json(err)
-                    return res.json(data3)
-                });
-                
-
-            })
 
         })
-}
+     }
 
 
 
