@@ -25,12 +25,17 @@ function Confirmation() {
           </ul>
         </header>
       </div>
+      <div className='ThankYou'>
+        <h1>Thank you, Benito Georgio</h1>
+        <p>You'll receive an email confirmation soon.</p>
+      </div>
       <div className='Confirmation-content'>
-        <h1>Thank you, {currentUser?.points}</h1>
-        <p>You'll receive a confirmation soon.</p>
       <form className='Confirmation-form-container'>
-        <h3 className='Date-confirmation'>Date: </h3>
-        <h3 className='Time-confirmation'>Time: </h3>
+        <h3 className='Date-confirmation'>Date: 01/14/2023</h3>
+        <h3 className='Time-confirmation'>Time: 2:03pm</h3>
+        <h3 className='NumberOfGuestConfirmation'>Number Of Guest: 25</h3>
+        <h4 className='Disclaimer'>High Traffic Day Disclaimer</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id.</p>
       </form>
       </div>
 

@@ -403,19 +403,36 @@ section {
   color: whitesmoke;
 }
 
-.Confirmation-form-container {
+.ThankYou {
+  position: absolute;
+  text-align: center;
+  color: whitesmoke;
+  margin-left: 550px;
+  margin-bottom: 600px;
+}
+
+.Confirmation-content {
   margin-left: 0px;
   border-width: 3px;
   border-style: solid;
   border-color: #636361;
-  width: 50vw;
-  height: 70vh;
-  text-align: center;
+  width: 30vw;
+  height: 50vh;
+  margin-left: 530px;
+  margin-top: 80px;
   text-decoration: none;
 }
 
 .Confirmation-form-container h3 {
   color: whitesmoke;
+  text-align: left;
+  margin: 30px;
+}
+
+.Confirmation-form-container p {
+  color: whitesmoke;
+  text-align: left;
+  margin: 30px;
 }
 
 .card-field {
