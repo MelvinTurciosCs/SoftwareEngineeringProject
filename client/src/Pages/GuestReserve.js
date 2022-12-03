@@ -8,7 +8,7 @@ import { AuthContext } from '../context/authContext';
 
 const GuestReserve = () => {
 
-    const {currentUser} = useContext(AuthContext);
+    //const {currentUser} = useContext(AuthContext);
 
     const[availT, setAvail] = useState()
 
@@ -29,7 +29,7 @@ const GuestReserve = () => {
             name:"fullname",
             type:"text",
             placeholder:"Full Name",
-            errorMessage:"Username should be 3-16 characters and shouldn't include and special character!",
+            errorMessage:"Must include your name.",
             label:"Name",
             pattern: "^[A-Za-z0-9]{3,16}$", //js regex code
             required: true
@@ -77,9 +77,9 @@ const GuestReserve = () => {
             name:"guests",
             type:"number",
             placeholder:"Number of Guests",
-            errorMessage:"Passwords don't match",
+            errorMessage:"Must have at least one Guest",
             label:"Number of Guests",
-            //pattern: values.password,
+            pattern: "^[1-9][0-9]*$",
             required: true
         }
     ]
@@ -157,7 +157,7 @@ const GuestReserve = () => {
             <FormInput key = {input.id} {...input} value= {values[input.name]} onChange={onChange}/>
             ))}
             <button type="submit">Submit</button>
-            {isWeekend()? alert("You are choosing a high traffic day. A hold fee is required") : <span>goodbye</span>}
+            {/* {isWeekend()? alert("You are choosing a high traffic day. A hold fee is required") : <span>goodbye</span>} */}
             {/* <h1>{values.birthday}</h1> */}
         </form>
         {/* {isWeekend} */}

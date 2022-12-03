@@ -40,7 +40,7 @@ const Register = () => {
 
   return (
     <div className='userSys'>
-        <h1>Register</h1>
+        <h1>Create Account</h1>
         <form onSubmit={handleSubmit}>
             <input type="text" placeholder='username' name = 'username' onChange={handleChange} required/>
             <input required type="text" placeholder='Full Name' name = 'fullname' onChange={handleChange}/>

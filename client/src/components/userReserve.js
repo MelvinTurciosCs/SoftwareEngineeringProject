@@ -2,6 +2,8 @@ import "../App.css"
 import { useState } from "react";
 import FormInput from "./FormInput";
 
+import { AuthContext } from '../context/authContext';
+
 const UserReserve = () => {
 
     const[values, setValues] = useState({
