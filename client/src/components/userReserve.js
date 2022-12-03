@@ -1,7 +1,7 @@
 import "../App.css"
 import React, { useState } from "react";
 import FormInput from "./FormInput";
-import Modal from "./SubmitMessage";
+import Modal from "../Pages/Modal";
 
 const UserReserve = () => {
     const [show, setShow] = useState(false);
@@ -123,14 +123,6 @@ const UserReserve = () => {
 
     const onChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value});
-
-        let specialDay = isWeekend();
-        if(specialDay === true)
-        {
-            return <Modal className='Guest Modal' title="Would you like to continue as a guest?" onClose={() => setShow(false)} show={show}>
-            <p className="ModalMessage">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </Modal>
-        }
     }
 
 
@@ -141,7 +133,10 @@ const UserReserve = () => {
             {inputs.map(input=>(
             <FormInput key = {input.id} {...input} value= {values[input.name]} onChange={onChange}/>
             ))}
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={() => setShow(true)}>Submit</button>
+            {isWeekend()?<span><Modal className='Guest Modal' title="This is a high traffic day" onClose={() => setShow(false)} show={show}>
+                <p className="ModalMessage">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </Modal></span> : <span>Goobye</span>}
             {/* <h1>{values.birthday}</h1> */}
         </form>
 
