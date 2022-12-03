@@ -10,6 +10,8 @@ const GuestReserve = () => {
 
     const {currentUser} = useContext(AuthContext);
 
+    const[availT, setAvail] = useState()
+
     const[values, setValues] = useState({
         fullname:"",
         email:"",
@@ -18,7 +20,7 @@ const GuestReserve = () => {
         phone:"",
         guests:"",
         tableName:"",
-        hasReserations:false
+        hasReserations:"true"
     });
 
     const inputs = [
@@ -82,30 +84,56 @@ const GuestReserve = () => {
         }
     ]
 
-    // const isWeekend = (e) => {
-    //     const date = values.date;
-    //     // const day = date.getDay();
-    //     let weekday = new Date();
-    //     //console.log(date.toString())
-    //     weekday = date.toString();
-    //     console.log(weekday)
-    //     // let isWeekend = false;
-    //     // // isWeekend = (day === 6) || (day === 0);
-    //     // if ((weekday.getDay() === 6) || (weekday.getDay() === 0)) console.log("Its a weekend")
-    //     // else console.log("Its no weekend")
-    // }
+    const isWeekend = (e) => {
+        const date = values.date;
+        const date2 = date.toString();
+        const moDa = date2.substring(5,)
+        let weekday = new Date(date2);
+        let is_Weekend = false;
+        let is_Holiday = false;
+
+        const holidays = [
+            "01-01",
+            "01-16",
+            "02-14", 
+            "02-20",
+            "04-07",
+            "05-29",
+            "11-10",
+            "11-04",
+            "12-24"
+        ]
+
+        for(let i = 0; i < holidays.length; i++) {
+            if(moDa === holidays[i])
+            {
+                console.log("is holiday")
+                is_Holiday = true;
+            }
+        }
+
+        if(weekday.getDay() === 5 || weekday.getDay() === 6) 
+        {
+            is_Weekend = true;
+        }
+
+        if(is_Weekend === true || is_Holiday === true)
+        {
+            return true
+        }
+    }
 
     const handleSubmit = async e => {
         e.preventDefault();
         try{
-            //isWeekend();
             let res = await axios.post("/reservations/add",values)
-            //let reserv = await axios.get("/reservations/checkRes",values)
-            console.log("Hello")
-            if(res === false)
-            {
-                console.log("No reservations on that day")
-            }
+            // let res = await axios.get("/reservations/checkRes",values)
+            // setAvail(res.data)
+            // console.log(availT)
+            // if(availT === 'true')
+            // {
+            //     console.log("No reservations on that day")
+            // }
         }catch(err){
             console.log(err)
         }
