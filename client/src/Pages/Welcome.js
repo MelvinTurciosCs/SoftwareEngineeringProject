@@ -93,13 +93,13 @@ class Welcome extends Component {
                 <div className='TopBar'>
                   <header>
                     <ul className='nav'>
-                      <a href='/#'><img src='logo-no-background.png' className='logo' alt='logo'></img></a>
+                    <img src={require('./assets/logo-no-background.png')} className='logo' alt='logo'></img>
                       <li><a href='/#'>Group Reservations</a></li>
                       <li><a href='/#'>Points</a></li>
                       <li><a href='/#'>Catering</a></li>
                       <li><a href='/#'>Contact</a></li>
                       <button onClick={this.infoToggle} className='MakeReservation'>Edit Account Information</button>
-                      <button className='SignIn'>Points: {this.state.userPoints}</button>
+                      <button className='Points'>Points: {this.state.userPoints}</button>
                       <button className='SignIn'>Sign Out</button>
                     </ul>
                   </header>

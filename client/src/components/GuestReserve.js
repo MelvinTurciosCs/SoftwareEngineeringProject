@@ -1,8 +1,11 @@
 import "../App.css"
 import { useState } from "react";
 import FormInput from "./FormInput";
+import Modal from "./SubmitMessage";
 
 const GuestReserve = () => {
+
+    const [show, setShow] = useState(false);
 
     const[values, setValues] = useState({
         fullName:"",
@@ -89,7 +92,10 @@ const GuestReserve = () => {
             {inputs.map(input=>(
             <FormInput key = {input.id} {...input} value= {values[input.name]} onChange={onChange}/>
             ))}
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={() => setShow(true)}>Submit</button>
+            <Modal className='HighTrafficDay' title="High Traffic Day" onClose={() => setShow(false)} show={show}>
+                <p className="ModalMessage">This is considered a high trafficday there might be limited seating.</p>
+            </Modal>
             {/* <h1>{values.birthday}</h1> */}
         </form>
 

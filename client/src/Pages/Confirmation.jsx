@@ -4,15 +4,25 @@ import { AuthContext } from '../context/authContext';
 import '../App.css';
 
 function Confirmation() {
-  const [goToSignIn, setGoToSignIn] = useState(false);
-  const [ currentUser ] = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
 
+  const[values, setValues] = useState({
+    fullName:"",
+    email:"",
+    date:"",
+    time:"",
+    phoneNumber:"",
+    numGuests:""
+});
+
+  const [goToSignIn, setGoToSignIn] = useState(false);
+  
   if(goToSignIn){
     return <Navigate to="/Login"/>;
   }
 
   return (
-    <>
+    <section>
       <div className='TopBar'>
         <header>
           <ul className='nav'>
@@ -25,14 +35,24 @@ function Confirmation() {
           </ul>
         </header>
       </div>
-      <form className='confirmation-form-container'>
-        <h1 className='ThankYouTitle'>Thank you, {currentUser?.points}</h1>
-        <p>You'll receive a confirmation soon.</p>
-        <form className='inner-form-contianer'>
-
-        </form>
+      <div className='ThankYou'>
+        <h1>Thank you, {values.fullName}</h1>
+        <p>You'll receive an email confirmation soon.</p>
+      </div>
+      <div className='Confirmation-content'>
+      <form className='Confirmation-form-container'>
+        <h3 className='Date-confirmation'>Date: {values.date}</h3>
+        <h3 className='Time-confirmation'>Time: {values.time}</h3>
+        <h3 className='NumberOfGuestConfirmation'>Phone Number: {values.phoneNumber}
+        </h3>
+        <h3 className='NumberOfGuestConfirmation'>Number Of Guest: {values.numGuests}
+        </h3>
+        <h4 className='Disclaimer'>High Traffic Day Disclaimer:</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id.</p>
       </form>
-    </>
+      </div>
+
+    </section>
   )
 }
 
