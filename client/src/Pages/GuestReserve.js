@@ -3,12 +3,9 @@ import { useContext } from 'react'
 import React from 'react'
 import { useState } from "react";
 import FormInput from "../components/FormInput";
-import axios from "axios";
-import { AuthContext } from '../context/authContext';
+import axios from "axios"
 
 const GuestReserve = () => {
-
-    const {currentUser} = useContext(AuthContext);
 
     const[values, setValues] = useState({
         fullname:"",
@@ -124,6 +121,7 @@ const GuestReserve = () => {
             <FormInput key = {input.id} {...input} value= {values[input.name]} onChange={onChange}/>
             ))}
             <button type="submit">Submit</button>
+            
             {/* <h1>{values.birthday}</h1> */}
         </form>
         {/* {isWeekend} */}
