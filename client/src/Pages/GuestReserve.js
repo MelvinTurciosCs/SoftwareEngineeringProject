@@ -17,8 +17,7 @@ const GuestReserve = () => {
         time:"",
         phone:"",
         guests:"",
-        tableName:"",
-        hasReserations:false
+        table:"",
     });
 
     const inputs = [
@@ -85,38 +84,29 @@ const GuestReserve = () => {
     // const isWeekend = (e) => {
     //     const date = values.date;
     //     // const day = date.getDay();
-    //     let weekday = new Date();
-    //     //console.log(date.toString())
-    //     weekday = date.toString();
+    //     const weekday = new Date();
     //     console.log(weekday)
-    //     // let isWeekend = false;
-    //     // // isWeekend = (day === 6) || (day === 0);
-    //     // if ((weekday.getDay() === 6) || (weekday.getDay() === 0)) console.log("Its a weekend")
-    //     // else console.log("Its no weekend")
+    //     let isWeekend = false;
+    //     // isWeekend = (day === 6) || (day === 0);
+    //     if ((weekday.getDay() === 6) || (weekday.getDay() === 0)) console.log("Its a weekend")
+    //     else console.log("Its no weekend")
     // }
 
     const handleSubmit = async e => {
         e.preventDefault();
         try{
-            //isWeekend();
-            let res = await axios.post("/reservations/add",values)
-            //let reserv = await axios.get("/reservations/checkRes",values)
-            console.log("Hello")
-            if(res === false)
-            {
-                console.log("No reservations on that day")
-            }
+            await axios.post("/reservations/add",values)
         }catch(err){
             console.log(err)
         }
     };
- 
+
     const onChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value});
         // isWeekend();
     }
 
-    //console.log(values);sdf
+    //console.log(values);
     return <div className = "GuestReserve">
         <form onSubmit={handleSubmit}>
         <h1>Reserve a Table</h1>
